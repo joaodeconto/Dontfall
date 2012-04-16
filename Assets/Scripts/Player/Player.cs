@@ -17,11 +17,18 @@ public class Player : MonoBehaviour {
 	}
 	
 	void Update () {
+		
+        if (Input.GetKeyDown (KeyCode.Backspace)) {  
+    Application.LoadLevel (0);  
+  }  
+	
+			
 		Move ();
 	}
 	
 	void Move () {
 		movement.z = (Input.GetAxis("Horizontal") * Time.deltaTime * speed);
+		movement.x = (Input.GetAxis("Vertical") * Time.deltaTime * speed);
 		controller.Move(movement);
 	}
 	

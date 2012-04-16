@@ -13,10 +13,17 @@ public class CameraFollowPlayer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+			
+        if (Input.GetKeyDown (KeyCode.Backspace)) {  
+    Application.LoadLevel (0);  
+  }  
 		if (target != null) {
 			transform.position = (target.position + distance);
 		} else {
 			target = GameObject.FindWithTag("Player").transform;
 		}
+		if (Input.GetKeyDown (KeyCode.Backspace)) {  
+    Application.LoadLevel (0);  
+  }  
 	}
 }
