@@ -683,8 +683,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100064}
   m_LocalRotation: {x: 0, y: .707081974, z: 0, w: .707131684}
-  m_LocalPosition: {x: 37.1815338, y: 271.267761, z: -18.069849}
-  m_LocalScale: {x: .800000012, y: .800000012, z: .800000012}
+  m_LocalPosition: {x: 37.2473488, y: 171.917297, z: -18.0698204}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 89.9959717, z: 0}
   m_Children:
   - {fileID: 400046}
@@ -908,8 +908,9 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6729c3d89f5613844ae358dab472799d, type: 1}
   m_Name: 
-  speed: 37.7400017
+  speed: 10
   prefabRagdoll: {fileID: 100056, guid: 9ef2b9a6cdf39804eaf475f17574effc, type: 2}
+  blood: {fileID: 100010, guid: c33008c1dcbc3ee44861f8b30e594f46, type: 2}
 --- !u!137 &13700002
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -974,13 +975,13 @@ CharacterController:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100064}
   serializedVersion: 2
-  m_Height: 5.80000019
-  m_Radius: .800000012
+  m_Height: 5
+  m_Radius: .5
   m_SlopeLimit: 45
   m_StepOffset: .300000012
   m_SkinWidth: .0799999982
   m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 2.42000008, z: 0}
+  m_Center: {x: 0, y: 2.5, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
