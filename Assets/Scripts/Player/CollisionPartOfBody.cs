@@ -36,11 +36,11 @@ public class CollisionPartOfBody : MonoBehaviour {
 			
 			print(transform.name + " : " + impactForce);
 			
-			if (impactForce > 30 * rigidbody.mass || 
+			if (impactForce > 50 * rigidbody.mass || 
 				(transform.name.Equals("Head_R") && impactForce > 10 * rigidbody.mass))
 				Instantiate (blood, transform.position, transform.rotation);
 			
-			if (impactForce > 20 * rigidbody.mass) {
+			if (impactForce > 25 * rigidbody.mass) {
 				fracture++;
 			}
 		}
@@ -68,5 +68,6 @@ public class CollisionPartOfBody : MonoBehaviour {
 	void EndGame () {
 		CollisionPartOfBody[] collisions = transform.parent.GetComponentsInChildren<CollisionPartOfBody>();
 		GameObject.Find("Scorer").GetComponent<Scorer>().CalculatePoints(higherVelocity, collisions);
+		enabled = false;
 	}
 }

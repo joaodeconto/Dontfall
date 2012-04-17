@@ -12,35 +12,50 @@ public class Player : MonoBehaviour {
 	private CharacterController controller;
 	private Vector3 movement;
 	private float force;
+	private bool clicked;
 	
 	// Use this for initialization
 	void Start () {
 		controller = GetComponent<CharacterController>();
 		tag = "Player";
+		clicked = false;
 	}
 	
 	void Update () {
 		Move ();
 	}
 	
-	void Move () {
-		movement.z = (Input.GetAxis("Horizontal") * Time.deltaTime * speed);
-		movement.x = (Input.GetAxis("Vertical") * Time.deltaTime * speed);
-		if (!Input.GetKey(KeyCode.Space)) {
-			controller.Move(movement);
-		}
-		else {
-			if (force < maximumForce)
-				force += 0.1f;
-		}
-		if (Input.GetKeyUp(KeyCode.Space)) {
-			CallRagdoll();
-		}
-	}
-	
 	void OnGUI () {
 		if (force != 0) {
 			GUILayout.Label("FORCE: " + (int)((force / maximumForce) * 100));
+		}
+	}
+	
+	/*void OnControllerColliderHit(ControllerColliderHit hit) {
+		if (hit.transform.tag != "Player") {
+			CallRagdoll();
+		}
+	}*/
+	
+	void Move () {
+		movement.z = (Input.GetAxis("Horizontal") * Time.deltaTime * speed);
+		movement.x = (Input.GetAxis("Vertical") * Time.deltaTime * speed);
+		if (!clicked) {
+			if (!Input.GetKey(KeyCode.Space)) {
+				controller.Move(movement);
+			}
+			else {
+				if (force < maximumForce)
+					force += 0.1f;
+			}
+			if (Input.GetKeyUp(KeyCode.Space)) {
+				//movement.y = (force / 100);
+				clicked = true;
+			}
+		} else {
+			CallRagdoll();
+			//movement.y -= 20f * Time.deltaTime;;
+			//controller.Move(movement);
 		}
 	}
 	
@@ -57,4 +72,5 @@ public class Player : MonoBehaviour {
 		//ragdoll.tag = "Player";
 		Destroy(gameObject);
 	}
+	
 }

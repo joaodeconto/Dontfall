@@ -909,8 +909,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6729c3d89f5613844ae358dab472799d, type: 1}
   m_Name: 
   speed: 10
-  prefabRagdoll: {fileID: 100056, guid: 9ef2b9a6cdf39804eaf475f17574effc, type: 2}
+  prefabRagdoll: {fileID: 100058, guid: 9ef2b9a6cdf39804eaf475f17574effc, type: 2}
   blood: {fileID: 100010, guid: c33008c1dcbc3ee44861f8b30e594f46, type: 2}
+  maximumForce: 15
 --- !u!137 &13700002
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -978,7 +979,7 @@ CharacterController:
   m_Height: 5
   m_Radius: .5
   m_SlopeLimit: 45
-  m_StepOffset: .300000012
+  m_StepOffset: 0
   m_SkinWidth: .0799999982
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 2.5, z: 0}
