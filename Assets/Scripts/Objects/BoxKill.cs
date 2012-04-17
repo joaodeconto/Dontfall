@@ -6,7 +6,7 @@ public class BoxKill : MonoBehaviour {
 		
 		if (collider.gameObject.tag.Equals("Player")) {
 			if (collider.gameObject.GetComponent<Player>() != null) {
-				collider.gameObject.GetComponent<Player>().Die();
+				collider.gameObject.GetComponent<Player>().CallRagdoll();
 			}
 		}
 	}
