@@ -7,10 +7,10 @@ public class Player : MonoBehaviour {
 	public float speed = 5.0f;
 	public GameObject prefabRagdoll;
 	public GameObject blood;
-	public Vector3 force = Vector3.one;
 	
 	private CharacterController controller;
 	private Vector3 movement;
+	private float force;
 	
 	// Use this for initialization
 	void Start () {
@@ -23,18 +23,29 @@ public class Player : MonoBehaviour {
 	}
 	
 	void Move () {
-		movement.z = (Input.GetAxis("Horizontal") * Time.deltaTime * speed);
-		movement.x = (Input.GetAxis("Vertical") * Time.deltaTime * speed);
-		controller.Move(movement);
+		if (!Input.GetKey(KeyCode.Space)) {
+			movement.z = (Input.GetAxis("Horizontal") * Time.deltaTime * speed);
+			movement.x = (Input.GetAxis("Vertical") * Time.deltaTime * speed);
+			controller.Move(movement);
+		}
+		else {
+			print(force);
+			force += 1f;
+		}
+		if (Input.GetKeyUp(KeyCode.Space)) {
+			movement.z = (Input.GetAxis("Horizontal") * Time.deltaTime * speed);
+			movement.x = (Input.GetAxis("Vertical") * Time.deltaTime * speed);
+			CallRagdoll();
+		}
 	}
 	
-	public void Die () {
+	public void CallRagdoll () {
 		GameObject ragdoll = Instantiate(prefabRagdoll, transform.position, transform.rotation) as GameObject;
 		CollisionPartOfBody[] collisions = ragdoll.GetComponentsInChildren<CollisionPartOfBody>();
 		foreach (CollisionPartOfBody c in collisions) {
 			c.Initialize(blood);
 			//if ( c.GetComponent<CharacterJoint>() != null) c.GetComponent<CharacterJoint>().breakForce = 100 * c.rigidbody.mass;
-			if ( c.rigidbody != null ) c.rigidbody.velocity = (new Vector3(movement.x * force.z, Mathf.Abs(movement.x) * force.y, movement.z * force.x) * c.rigidbody.mass);
+			if ( c.rigidbody != null ) c.rigidbody.velocity = (new Vector3(movement.x * force, Mathf.Abs(movement.x) * force, movement.z * force) * c.rigidbody.mass);
 		}
 		//GameObject.FindWithTag("MainCamera").GetComponent<CameraFollowPlayer>().target = collisions[0].transform;
 		//ragdoll.tag = "Player";
