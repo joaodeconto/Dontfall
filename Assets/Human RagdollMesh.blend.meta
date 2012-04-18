@@ -1,20 +1,10 @@
 fileFormatVersion: 2
-guid: 33cdf0325b08b3649acf418c5721dd3f
+guid: 1209ad42a64b777429d6b5c8882a1e0b
 ModelImporter:
   fileIDToRecycleName:
     4300000: Cube
     4300002: Humano_LOW
-    7400000: Default Take //// Human
-    7400002: Attack1 //// Human
-    7400004: Attack2 //// Human
-    7400006: Damage //// Human
-    7400008: Defend //// Human
-    7400010: Idle1 //// Human
-    7400012: Idle2 //// Human
-    7400014: Talk //// Human
-    7400016: Walk //// Human
-    7400018: Strafe //// Human
-    7400020: Jump //// Human
+    7400000: Default Take //// Human RagdollMesh
   serializedVersion: 10
   materials:
     importMaterials: 1
@@ -52,230 +42,240 @@ ModelImporter:
     //RootNode:
       data:
         first: 1
-        second: a4860100
-      data:
-        first: 4
-        second: 841a0600
-      data:
-        first: 111
-        second: 605fa900
-    Foot_L:
-      data:
-        first: 1
-        second: a8860100
-      data:
-        first: 4
-        second: 881a0600
-    Foot_R:
-      data:
-        first: 1
-        second: a2860100
-      data:
-        first: 4
-        second: 821a0600
-    Forearm_L:
-      data:
-        first: 1
-        second: ca860100
-      data:
-        first: 4
-        second: aa1a0600
-    Forearm_L_001_L:
-      data:
-        first: 1
-        second: c0860100
-      data:
-        first: 4
-        second: a01a0600
-    Forearm_L_002_L:
-      data:
-        first: 1
-        second: be860100
-      data:
-        first: 4
-        second: 9e1a0600
-    Forearm_R:
-      data:
-        first: 1
-        second: b8860100
-      data:
-        first: 4
-        second: 981a0600
-    Forearm_R_001_R:
-      data:
-        first: 1
-        second: b0860100
-      data:
-        first: 4
-        second: 901a0600
-    Forearm_R_002_R:
-      data:
-        first: 1
-        second: ae860100
-      data:
-        first: 4
-        second: 8e1a0600
-    Hand_L:
-      data:
-        first: 1
-        second: c8860100
-      data:
-        first: 4
-        second: a81a0600
-    Hand_R:
-      data:
-        first: 1
-        second: b6860100
-      data:
-        first: 4
-        second: 961a0600
-    Head_R:
-      data:
-        first: 1
-        second: d4860100
-      data:
-        first: 4
-        second: b41a0600
-    Humano_LOW:
-      data:
-        first: 1
         second: de860100
       data:
         first: 4
         second: be1a0600
-    Mit1_L:
       data:
-        first: 1
-        second: c6860100
-      data:
-        first: 4
-        second: a61a0600
-    Mit1_L_001_L:
-      data:
-        first: 1
-        second: c4860100
-      data:
-        first: 4
-        second: a41a0600
-    Mit1_R:
-      data:
-        first: 1
-        second: b4860100
-      data:
-        first: 4
-        second: 941a0600
-    Mit1_R_001_R:
-      data:
-        first: 1
-        second: b2860100
-      data:
-        first: 4
-        second: 921a0600
-    Neck_R:
-      data:
-        first: 1
-        second: d6860100
-      data:
-        first: 4
-        second: b61a0600
-    Neck_R_001:
-      data:
-        first: 1
-        second: d2860100
-      data:
-        first: 4
-        second: b21a0600
-    Neck_R_002:
-      data:
-        first: 1
-        second: d0860100
-      data:
-        first: 4
-        second: b01a0600
-    Pelvis_R:
-      data:
-        first: 1
-        second: da860100
-      data:
-        first: 4
-        second: ba1a0600
-    Pelvis_R_001:
-      data:
-        first: 1
-        second: c2860100
-      data:
-        first: 4
-        second: a21a0600
-      data:
-        first: 137
-        second: a00bd100
-    Rigify:
+        first: 111
+        second: 605fa900
+    Cube:
       data:
         first: 1
         second: dc860100
       data:
         first: 4
         second: bc1a0600
-    Shin_L:
+      data:
+        first: 137
+        second: a20bd100
+    Foot_L:
       data:
         first: 1
-        second: aa860100
+        second: a2860100
       data:
         first: 4
-        second: 8a1a0600
-    Shin_R:
+        second: 821a0600
+    Foot_R:
       data:
         first: 1
-        second: a0860100
+        second: e0860100
       data:
         first: 4
-        second: 801a0600
-    Shoulder_L:
+        second: c01a0600
+    Forearm_L:
       data:
         first: 1
-        second: ce860100
+        second: c6860100
       data:
         first: 4
-        second: ae1a0600
-    Shoulder_R:
+        second: a61a0600
+    Forearm_L_001_L:
       data:
         first: 1
         second: bc860100
       data:
         first: 4
         second: 9c1a0600
-    Thigh_L:
-      data:
-        first: 1
-        second: ac860100
-      data:
-        first: 4
-        second: 8c1a0600
-    Thigh_R:
-      data:
-        first: 1
-        second: a6860100
-      data:
-        first: 4
-        second: 861a0600
-    Torso_R:
-      data:
-        first: 1
-        second: d8860100
-      data:
-        first: 4
-        second: b81a0600
-    UpperArm_L:
-      data:
-        first: 1
-        second: cc860100
-      data:
-        first: 4
-        second: ac1a0600
-    UpperArm_R:
+    Forearm_L_002_L:
       data:
         first: 1
         second: ba860100
       data:
         first: 4
         second: 9a1a0600
+    Forearm_R:
+      data:
+        first: 1
+        second: b4860100
+      data:
+        first: 4
+        second: 941a0600
+    Forearm_R_001_R:
+      data:
+        first: 1
+        second: ac860100
+      data:
+        first: 4
+        second: 8c1a0600
+    Forearm_R_002_R:
+      data:
+        first: 1
+        second: aa860100
+      data:
+        first: 4
+        second: 8a1a0600
+    Hand_L:
+      data:
+        first: 1
+        second: c4860100
+      data:
+        first: 4
+        second: a41a0600
+    Hand_R:
+      data:
+        first: 1
+        second: b2860100
+      data:
+        first: 4
+        second: 921a0600
+    Head_R:
+      data:
+        first: 1
+        second: d0860100
+      data:
+        first: 4
+        second: b01a0600
+    Humano_LOW:
+      data:
+        first: 1
+        second: da860100
+      data:
+        first: 4
+        second: ba1a0600
+      data:
+        first: 137
+        second: a00bd100
+    Mit1_L:
+      data:
+        first: 1
+        second: c2860100
+      data:
+        first: 4
+        second: a21a0600
+    Mit1_L_001_L:
+      data:
+        first: 1
+        second: c0860100
+      data:
+        first: 4
+        second: a01a0600
+    Mit1_R:
+      data:
+        first: 1
+        second: b0860100
+      data:
+        first: 4
+        second: 901a0600
+    Mit1_R_001_R:
+      data:
+        first: 1
+        second: ae860100
+      data:
+        first: 4
+        second: 8e1a0600
+    Neck_R:
+      data:
+        first: 1
+        second: d2860100
+      data:
+        first: 4
+        second: b21a0600
+    Neck_R_001:
+      data:
+        first: 1
+        second: ce860100
+      data:
+        first: 4
+        second: ae1a0600
+    Neck_R_002:
+      data:
+        first: 1
+        second: cc860100
+      data:
+        first: 4
+        second: ac1a0600
+    Pelvis_R:
+      data:
+        first: 1
+        second: d6860100
+      data:
+        first: 4
+        second: b61a0600
+    Rigify:
+      data:
+        first: 1
+        second: d8860100
+      data:
+        first: 4
+        second: b81a0600
+    Shin_L:
+      data:
+        first: 1
+        second: a4860100
+      data:
+        first: 4
+        second: 841a0600
+    Shin_R:
+      data:
+        first: 1
+        second: a6860100
+      data:
+        first: 4
+        second: 861a0600
+    Shoulder_L:
+      data:
+        first: 1
+        second: ca860100
+      data:
+        first: 4
+        second: aa1a0600
+    Shoulder_R:
+      data:
+        first: 1
+        second: b8860100
+      data:
+        first: 4
+        second: 981a0600
+    Thigh_L:
+      data:
+        first: 1
+        second: a8860100
+      data:
+        first: 4
+        second: 881a0600
+    Thigh_R:
+      data:
+        first: 1
+        second: a0860100
+      data:
+        first: 4
+        second: 801a0600
+    Torso_R:
+      data:
+        first: 1
+        second: d4860100
+      data:
+        first: 4
+        second: b41a0600
+    UpperArm_L:
+      data:
+        first: 1
+        second: c8860100
+      data:
+        first: 4
+        second: a81a0600
+    UpperArm_R:
+      data:
+        first: 1
+        second: b6860100
+      data:
+        first: 4
+        second: 961a0600
+    bengala:
+      data:
+        first: 1
+        second: be860100
+      data:
+        first: 4
+        second: 9e1a0600
