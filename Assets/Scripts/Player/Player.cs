@@ -21,6 +21,7 @@ public class Player : MonoBehaviour {
 		windController = GameObject.Find("WindAudio").GetComponent<WindController>();
 		tag = "Player";
 		clicked = false;
+		Application.runInBackground = true;
 	}
 	
 	void Update () {
@@ -56,7 +57,7 @@ public class Player : MonoBehaviour {
 			if (Input.GetKeyUp(KeyCode.Space)) {
 				//movement.y = (force / 100);
 				clicked = true;
-				animation.CrossFade("Walk");
+				animation.CrossFade("Jump");
 				//lastHeight = transform.position.y;
 			}
 		} else {
@@ -66,7 +67,7 @@ public class Player : MonoBehaviour {
 				jump = true;
 				controller.enabled = false;
 			}
-			if (transform.position.y < lastHeight) CallRagdoll();
+			if (transform.position.y < lastHeight && !animation.IsPlaying("Jump")) CallRagdoll();
 			else lastHeight = transform.position.y;
 			//movement.y -= 20f * Time.deltaTime;;
 			//controller.Move(movement);
@@ -85,10 +86,11 @@ public class Player : MonoBehaviour {
 		CollisionPartOfBody[] collisions = ragdoll.GetComponentsInChildren<CollisionPartOfBody>();
 		foreach (CollisionPartOfBody c in collisions) {
 			c.Initialize(blood);
-			//if ( c.GetComponent<CharacterJoint>() != null) c.GetComponent<CharacterJoint>().breakForce = 100 * c.rigidbody.mass;
-			//if ( c.rigidbody != null ) c.rigidbody.velocity = (new Vector3(movement.x * force, Mathf.Abs(movement.x) * force, movement.z * force) * c.rigidbody.mass);
+//			if ( c.GetComponent<CharacterJoint>() != null) c.GetComponent<CharacterJoint>().breakForce = 100 * c.rigidbody.mass;
 			if ( c.isMain ) windController.Initialize(c.rigidbody);
 			if ( c.rigidbody != null ) c.rigidbody.velocity = rigidbody.velocity;
+			if ( c.rigidbody != null ) c.rigidbody.AddTorque(new Vector3(0, 0, (movement.x * force) * -10000) * c.rigidbody.mass);
+			
 		}
 		//GameObject.FindWithTag("MainCamera").GetComponent<CameraFollowPlayer>().target = collisions[0].transform;
 		//ragdoll.tag = "Player";
