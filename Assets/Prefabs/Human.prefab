@@ -476,6 +476,8 @@ GameObject:
   - 4: {fileID: 400032}
   - 143: {fileID: 14300000}
   - 114: {fileID: 11400000}
+  - 54: {fileID: 5400000}
+  - 111: {fileID: 11100000}
   m_Layer: 0
   m_Name: Human
   m_TagString: Player
@@ -535,7 +537,6 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 23.8299408, z: 0}
   m_Children:
   - {fileID: 400050}
-  - {fileID: 400028}
   m_Father: {fileID: 400060}
 --- !u!4 &400010
 Transform:
@@ -657,13 +658,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100026}
-  m_LocalRotation: {x: 3.41804629e-08, y: .70815444, z: 2.95565101e-08, w: .706057608}
-  m_LocalPosition: {x: -.0879535452, y: 6.64047395e-09, z: 8.89984442e-09}
-  m_LocalScale: {x: .999999881, y: 1, z: .999999881}
-  m_LocalEulerAnglesHint: {x: 0, y: 90.1699066, z: 0}
+  m_LocalRotation: {x: -.364174396, y: .416417003, z: -.186794549, w: .811838448}
+  m_LocalPosition: {x: 0, y: -0, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: -25.8319092, y: 64.4678955, z: -42.3713379}
   m_Children:
   - {fileID: 400062}
-  m_Father: {fileID: 400008}
+  m_Father: {fileID: 400050}
 --- !u!4 &400030
 Transform:
   m_ObjectHideFlags: 1
@@ -803,7 +804,8 @@ Transform:
   m_LocalPosition: {x: -.0879535452, y: 6.64047395e-09, z: 8.89984442e-09}
   m_LocalScale: {x: 1, y: .99999994, z: .99999994}
   m_LocalEulerAnglesHint: {x: 48.3200073, y: 35.8604126, z: -.000244140625}
-  m_Children: []
+  m_Children:
+  - {fileID: 400028}
   m_Father: {fileID: 400008}
 --- !u!4 &400052
 Transform:
@@ -898,6 +900,39 @@ Transform:
   m_Children:
   - {fileID: 400010}
   m_Father: {fileID: 400060}
+--- !u!54 &5400000
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100064}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
+--- !u!111 &11100000
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100064}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400016, guid: 33cdf0325b08b3649acf418c5721dd3f, type: 3}
+  m_Animations:
+  - {fileID: 7400016, guid: 33cdf0325b08b3649acf418c5721dd3f, type: 3}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 1
+  m_CullingType: 0
+  m_UserAABB:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1

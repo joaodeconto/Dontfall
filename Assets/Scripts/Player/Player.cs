@@ -13,10 +13,12 @@ public class Player : MonoBehaviour {
 	private Vector3 movement;
 	private float force;
 	private bool clicked;
+	private WindController windController;
 	
 	// Use this for initialization
 	void Start () {
 		controller = GetComponent<CharacterController>();
+		windController = GameObject.Find("WindAudio").GetComponent<WindController>();
 		tag = "Player";
 		clicked = false;
 	}
@@ -37,36 +39,56 @@ public class Player : MonoBehaviour {
 		}
 	}*/
 	
+	bool jump = false;
+	float lastHeight;
 	void Move () {
-		movement.z = (Input.GetAxis("Horizontal") * Time.deltaTime * speed);
-		movement.x = (Input.GetAxis("Vertical") * Time.deltaTime * speed);
 		if (!clicked) {
+			movement.z = (Input.GetAxis("Horizontal") * Time.deltaTime * speed);
+			movement.x = (Input.GetAxis("Vertical") * Time.deltaTime * speed);
 			if (!Input.GetKey(KeyCode.Space)) {
 				controller.Move(movement);
 			}
 			else {
 				if (force < maximumForce)
 					force += 0.1f;
+				controller.Move(Vector3.zero);
 			}
 			if (Input.GetKeyUp(KeyCode.Space)) {
 				//movement.y = (force / 100);
 				clicked = true;
+				animation.CrossFade("Walk");
+				//lastHeight = transform.position.y;
 			}
 		} else {
-			CallRagdoll();
+			if ( rigidbody != null && !jump ) {
+				float z = movement.x > 0 ? movement.z * force : 0;
+				rigidbody.velocity = (new Vector3(movement.x * force, 0.2f * force, z) * 3); 
+				jump = true;
+				controller.enabled = false;
+			}
+			if (transform.position.y < lastHeight) CallRagdoll();
+			else lastHeight = transform.position.y;
 			//movement.y -= 20f * Time.deltaTime;;
 			//controller.Move(movement);
 		}
 	}
 	
+	
 	public void CallRagdoll () {
 		GameObject ragdoll = Instantiate(prefabRagdoll, transform.position, transform.rotation) as GameObject;
+		Transform[] ragdollChilds = ragdoll.GetComponentsInChildren<Transform>();
+		Transform[] childs = GetComponentsInChildren<Transform>();
+		for (int i = 0; i != ragdollChilds.Length; ++i) {
+			ragdollChilds[i].position = childs[i].position;
+			ragdollChilds[i].rotation = childs[i].rotation;
+		}
 		CollisionPartOfBody[] collisions = ragdoll.GetComponentsInChildren<CollisionPartOfBody>();
 		foreach (CollisionPartOfBody c in collisions) {
 			c.Initialize(blood);
-			print("");
 			//if ( c.GetComponent<CharacterJoint>() != null) c.GetComponent<CharacterJoint>().breakForce = 100 * c.rigidbody.mass;
-			if ( c.rigidbody != null ) c.rigidbody.velocity = (new Vector3(movement.x * force, Mathf.Abs(movement.x) * force, movement.z * force) * c.rigidbody.mass);
+			//if ( c.rigidbody != null ) c.rigidbody.velocity = (new Vector3(movement.x * force, Mathf.Abs(movement.x) * force, movement.z * force) * c.rigidbody.mass);
+			if ( c.isMain ) windController.Initialize(c.rigidbody);
+			if ( c.rigidbody != null ) c.rigidbody.velocity = rigidbody.velocity;
 		}
 		//GameObject.FindWithTag("MainCamera").GetComponent<CameraFollowPlayer>().target = collisions[0].transform;
 		//ragdoll.tag = "Player";
