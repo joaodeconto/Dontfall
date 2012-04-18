@@ -44,8 +44,14 @@ public class Player : MonoBehaviour {
 	float lastHeight;
 	void Move () {
 		if (!clicked) {
+			rigidbody.velocity = (new Vector3(0, 0, 0)); 
 			movement.z = (Input.GetAxis("Horizontal") * Time.deltaTime * speed);
 			movement.x = (Input.GetAxis("Vertical") * Time.deltaTime * speed);
+			if (Input.GetAxisRaw("Horizontal") != 0) {
+				animation.CrossFade("Walk");
+			} else {
+				animation.CrossFade("Idle1");
+			}
 			if (!Input.GetKey(KeyCode.Space)) {
 				controller.Move(movement);
 			}
@@ -61,11 +67,13 @@ public class Player : MonoBehaviour {
 				//lastHeight = transform.position.y;
 			}
 		} else {
-			if ( rigidbody != null && !jump ) {
-				float z = movement.x > 0 ? movement.z * force : 0;
-				rigidbody.velocity = (new Vector3(movement.x * force, 0.2f * force, z) * 3); 
-				jump = true;
-				controller.enabled = false;
+			if (!jump) {
+				if (rigidbody != null && (animation["Jump"].time / animation["Jump"].length) > 0.24f) {
+					float z = movement.x > 0 ? movement.z * force : 0;
+					rigidbody.velocity = (new Vector3(movement.x * force, 0.2f * force, z) * 3); 
+					jump = true;
+					controller.enabled = false;
+				}
 			}
 			if (transform.position.y < lastHeight && !animation.IsPlaying("Jump")) CallRagdoll();
 			else lastHeight = transform.position.y;
