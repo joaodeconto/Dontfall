@@ -48,9 +48,9 @@ public class Player : MonoBehaviour {
 			movement.z = (Input.GetAxis("Horizontal") * Time.deltaTime * speed);
 			movement.x = (Input.GetAxis("Vertical") * Time.deltaTime * speed);
 			if (Input.GetAxisRaw("Horizontal") != 0) {
-				animation.CrossFade("Walk");
+				animation.CrossFade("Strafe");
 			} else {
-				animation.CrossFade("Idle1");
+				animation.CrossFade("Idle");
 			}
 			if (!Input.GetKey(KeyCode.Space)) {
 				controller.Move(movement);
