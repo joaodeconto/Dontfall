@@ -26,11 +26,17 @@ public class Cars : MonoBehaviour {
 		rays[1] = new Ray(transform.position + (sideLeft), transform.forward / 2);
 		for (int i = 0; i != rays.Length; ++i) {
 			if(Physics.Raycast(rays[i], out hit, 7.5f)) {
-				if (hit.transform != transform.GetChild(0)) {
-					if (hit.transform.tag.Equals("Car")) {
-						if (i == 0)	return;
-					} else return;
-				}
+				if (hit.transform.tag.Equals("Car")) {
+					if (i == 0)	return;
+				} else return;
+					
+//				if (hit.transform.parent != null) {
+//					if (hit.transform.parent != transform) {
+//						if (hit.transform.tag.Equals("Car")) {
+//							if (i == 0)	return;
+//						} else return;
+//					}
+//				} else return;
 			}
 		}
 		Move();
