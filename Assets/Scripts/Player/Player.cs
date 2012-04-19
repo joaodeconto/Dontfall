@@ -53,7 +53,7 @@ public class Player : MonoBehaviour {
 				animation.CrossFade("Idle");
 			}
 			if (!Input.GetKey(KeyCode.Space)) {
-				controller.Move(movement);
+				controller.Move(new Vector3(0, movement.y, movement.z));
 			}
 			else {
 				if (force < maximumForce)
@@ -70,7 +70,8 @@ public class Player : MonoBehaviour {
 			if (!jump) {
 				if (rigidbody != null && (animation["Jump"].time / animation["Jump"].length) > 0.24f) {
 					float z = movement.x > 0 ? movement.z * force : 0;
-					rigidbody.velocity = (new Vector3(movement.x * force, 0.2f * force, z) * 3); 
+					float x = movement.x > 0 ? movement.x * force : 0;
+					rigidbody.velocity = (new Vector3(x, 0.2f * force, z) * 3); 
 					jump = true;
 					controller.enabled = false;
 				}
