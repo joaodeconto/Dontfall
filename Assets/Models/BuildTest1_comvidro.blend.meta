@@ -7,6 +7,9 @@ ModelImporter:
     4300004: Plane
     4300006: Esquadria_002
     4300008: Cylinder
+    4300010: Cylinder_003
+    4300012: Cylinder_002
+    4300014: Cylinder_001
     7400000: Default Take //// BuildTest1_comvidro
   serializedVersion: 10
   materials:
@@ -65,6 +68,45 @@ ModelImporter:
       data:
         first: 33
         second: a85a3200
+    Cylinder_001:
+      data:
+        first: 1
+        second: ac860100
+      data:
+        first: 4
+        second: 8c1a0600
+      data:
+        first: 23
+        second: 6a182300
+      data:
+        first: 33
+        second: aa5a3200
+    Cylinder_002:
+      data:
+        first: 1
+        second: b0860100
+      data:
+        first: 4
+        second: 901a0600
+      data:
+        first: 23
+        second: 6e182300
+      data:
+        first: 33
+        second: ae5a3200
+    Cylinder_003:
+      data:
+        first: 1
+        second: ae860100
+      data:
+        first: 4
+        second: 8e1a0600
+      data:
+        first: 23
+        second: 6c182300
+      data:
+        first: 33
+        second: ac5a3200
     Esquadria_000:
       data:
         first: 1
