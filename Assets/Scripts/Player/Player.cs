@@ -5,10 +5,10 @@ using System.Collections;
 [RequireComponent(typeof(CharacterController))]
 public class Player : MonoBehaviour {
 	
-	public float speed = 5.0f;
+	public float speed = 2f;
 	public GameObject prefabRagdoll;
 	public GameObject blood;
-	public float maximumForce = 15f;
+	public float maximumForce = 10f;
 	
 	private CharacterController controller;
 	private Vector3 movement;
@@ -24,6 +24,7 @@ public class Player : MonoBehaviour {
 		windController = GameObject.Find("WindAudio").GetComponent<WindController>();
 		tag = "Player";
 		clicked = false;
+		rigidbody.useGravity = false;
 		Application.runInBackground = true;
 	}
 	
@@ -48,11 +49,11 @@ public class Player : MonoBehaviour {
 	void Move () {
 		if (!clicked) {
 			rigidbody.velocity = (new Vector3(0, 0, 0)); 
-			movement.z = (Input.GetAxis("Horizontal") * Time.deltaTime * speed);
-			movement.x = (Input.GetAxis("Vertical") * Time.deltaTime * speed);
+			movement.x = -(Input.GetAxis("Horizontal") * Time.deltaTime * speed);
+			movement.z = (Input.GetAxis("Vertical") * Time.deltaTime * speed);
 			if (!Input.GetKey(KeyCode.Space)) {
-				//controller.Move(new Vector3(0, movement.y, movement.z));
-				controller.Move(movement);
+				controller.Move(new Vector3(movement.x, movement.y, 0));
+				//controller.Move(movement);
 				if (Input.GetAxisRaw("Horizontal") != 0) {
 					animation.CrossFade("Strafe");
 				} else {
@@ -74,12 +75,13 @@ public class Player : MonoBehaviour {
 		} else {
 			if (!jump) {
 				if (rigidbody != null && (animation["Jump"].time / animation["Jump"].length) > 0.24f) {
-					float z = movement.x > 0 ? movement.z * force : 0;
-					float x = movement.x > 0 ? movement.x * force : 0.1f;
+					float z = movement.z > 0 ? movement.z * force : 0.1f;
+					float x = movement.z > 0 ? movement.x * force : 0;
 					rigidbody.velocity = (new Vector3(x, 0.2f * force, z) * 3); 
 					jump = true;
 					controller.enabled = false;
 					GetComponent<CapsuleCollider>().enabled = true;
+					rigidbody.useGravity = true;
 				}
 			}
 			if (transform.position.y < lastHeight && !animation.IsPlaying("Jump")) CallRagdoll();

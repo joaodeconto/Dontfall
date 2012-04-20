@@ -45,11 +45,11 @@ public class CollisionPartOfBody : MonoBehaviour {
 			
 			print(transform.name + " : " + impactForce);
 			
-			if (impactForce > ForceToApply(50) || 
+			if (impactForce > ForceToApply(25) || 
 				(transform.name.Equals("Neck_R") && impactForce > ForceToApply(10)))
 				Instantiate (blood, transform.position, transform.rotation);
 			
-			if (impactForce > ForceToApply(25)) {
+			if (impactForce > ForceToApply(10)) {
 				fracture++;
 			}
 		}
