@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-[AddComponentMenu("Dont Fall/Player/Blood")]
+[AddComponentMenu("Dont Fall/Player/Collision Part Of Body")]
 public class CollisionPartOfBody : MonoBehaviour {
 	
 	public bool isBlood = true;
@@ -21,8 +21,17 @@ public class CollisionPartOfBody : MonoBehaviour {
 				if (timer > 2f) {
 					EndGame ();
 				}
-			} else timer = 0;
+			} else {
+				timer = 0;
+			}
 			if (rigidbody.velocity.magnitude == 0) EndGame ();
+			
+			if (rigidbody.velocity.magnitude > 5) {
+				GetComponentInChildren<AudioSource>().volume = Mathf.Clamp( rigidbody.velocity.magnitude / 100,
+																			0, 1);
+			} else {
+				GetComponentInChildren<AudioSource>().volume = 0;
+			}
 		}
 	}
 	
@@ -30,17 +39,17 @@ public class CollisionPartOfBody : MonoBehaviour {
 		if (!rigidbody)
 			return;
 		
-		if (collision.transform.tag != "Player") {
+		if (!collision.transform.tag.Equals("Player")) {
 			
 			float impactForce = collision.relativeVelocity.magnitude * rigidbody.mass;
 			
 			print(transform.name + " : " + impactForce);
 			
-			if (impactForce > 50 * rigidbody.mass || 
-				(transform.name.Equals("Head_R") && impactForce > 10 * rigidbody.mass))
+			if (impactForce > ForceToApply(50) || 
+				(transform.name.Equals("Neck_R") && impactForce > ForceToApply(10)))
 				Instantiate (blood, transform.position, transform.rotation);
 			
-			if (impactForce > 25 * rigidbody.mass) {
+			if (impactForce > ForceToApply(25)) {
 				fracture++;
 			}
 		}
@@ -65,9 +74,17 @@ public class CollisionPartOfBody : MonoBehaviour {
 		higherVelocity = 0;
 	}
 	
+	float ForceToApply (float maxForce) {
+		return (maxForce * rigidbody.mass); /*/ (fracture + 1);*/ 
+	}
+	
+	void NumberOfFractures () {
+	}
+	
 	void EndGame () {
 		CollisionPartOfBody[] collisions = transform.parent.GetComponentsInChildren<CollisionPartOfBody>();
 		GameObject.Find("Scorer").GetComponent<Scorer>().CalculatePoints(higherVelocity, collisions);
+		GameObject.Find("WindAudio").audio.volume = 0.1f;
 		enabled = false;
 	}
 }

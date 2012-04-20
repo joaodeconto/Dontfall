@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
+[AddComponentMenu("Dont Fall/Player/Player")]
 [RequireComponent(typeof(CharacterController))]
 public class Player : MonoBehaviour {
 	
@@ -14,6 +15,8 @@ public class Player : MonoBehaviour {
 	private float force;
 	private bool clicked;
 	private WindController windController;
+	private bool jump = false;
+	private float lastHeight;
 	
 	// Use this for initialization
 	void Start () {
@@ -34,28 +37,30 @@ public class Player : MonoBehaviour {
 		}
 	}
 	
-	/*void OnControllerColliderHit(ControllerColliderHit hit) {
+	void OnCollisionEnter(Collision hit) {
 		if (hit.transform.tag != "Player") {
-			CallRagdoll();
+			if (jump) {
+			//	CallRagdoll();
+			}
 		}
-	}*/
+	}
 	
-	bool jump = false;
-	float lastHeight;
 	void Move () {
 		if (!clicked) {
 			rigidbody.velocity = (new Vector3(0, 0, 0)); 
 			movement.z = (Input.GetAxis("Horizontal") * Time.deltaTime * speed);
 			movement.x = (Input.GetAxis("Vertical") * Time.deltaTime * speed);
-			if (Input.GetAxisRaw("Horizontal") != 0) {
-				animation.CrossFade("Strafe");
-			} else {
-				animation.CrossFade("Idle");
-			}
 			if (!Input.GetKey(KeyCode.Space)) {
-				controller.Move(new Vector3(0, movement.y, movement.z));
+				//controller.Move(new Vector3(0, movement.y, movement.z));
+				controller.Move(movement);
+				if (Input.GetAxisRaw("Horizontal") != 0) {
+					animation.CrossFade("Strafe");
+				} else {
+					animation.CrossFade("Idle");
+				}
 			}
 			else {
+				animation.CrossFade("Idle");
 				if (force < maximumForce)
 					force += 0.1f;
 				controller.Move(Vector3.zero);
@@ -70,10 +75,11 @@ public class Player : MonoBehaviour {
 			if (!jump) {
 				if (rigidbody != null && (animation["Jump"].time / animation["Jump"].length) > 0.24f) {
 					float z = movement.x > 0 ? movement.z * force : 0;
-					float x = movement.x > 0 ? movement.x * force : 0;
+					float x = movement.x > 0 ? movement.x * force : 0.1f;
 					rigidbody.velocity = (new Vector3(x, 0.2f * force, z) * 3); 
 					jump = true;
 					controller.enabled = false;
+					GetComponent<CapsuleCollider>().enabled = true;
 				}
 			}
 			if (transform.position.y < lastHeight && !animation.IsPlaying("Jump")) CallRagdoll();
@@ -95,7 +101,7 @@ public class Player : MonoBehaviour {
 		CollisionPartOfBody[] collisions = ragdoll.GetComponentsInChildren<CollisionPartOfBody>();
 		foreach (CollisionPartOfBody c in collisions) {
 			c.Initialize(blood);
-//			if ( c.GetComponent<CharacterJoint>() != null) c.GetComponent<CharacterJoint>().breakForce = 100 * c.rigidbody.mass;
+			//if ( c.GetComponent<CharacterJoint>() != null) c.GetComponent<CharacterJoint>().breakForce = 100 * c.rigidbody.mass;
 			if ( c.isMain ) windController.Initialize(c.rigidbody);
 			if ( c.rigidbody != null ) c.rigidbody.velocity = rigidbody.velocity;
 			if ( c.rigidbody != null ) c.rigidbody.AddTorque(new Vector3(0, 0, (movement.x * force) * -10000) * c.rigidbody.mass);
