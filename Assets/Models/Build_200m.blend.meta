@@ -3,6 +3,7 @@ guid: 03081a799cf5ead46aef0bc6b95c7fa2
 ModelImporter:
   fileIDToRecycleName:
     4300000: Cube
+    4300002: Cube_001
     7400000: Default Take //// Build_200m
   serializedVersion: 10
   materials:
@@ -21,7 +22,7 @@ ModelImporter:
     clipAnimations: []
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: .300000012
     meshCompression: 0
     addColliders: 0
     swapUVChannels: 0
@@ -33,7 +34,7 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
   tangentSpace:
-    normalSmoothAngle: 60
+    normalSmoothAngle: 0
     splitTangentsAcrossUV: 1
     normalImportMode: 1
     tangentImportMode: 1

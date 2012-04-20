@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Vidro
-  m_Shader: {fileID: 23, guid: 0000000000000000e000000000000000, type: 0}
+  m_Shader: {fileID: 20, guid: 0000000000000000e000000000000000, type: 0}
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -15,7 +15,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: e10173c9e3c67ad42a51e447b5b47c30, type: 1}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -29,7 +29,7 @@ Material:
         first:
           name: _Cube
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 8900000, guid: 881a4a076a4e8d14491caa2afdcd0bc7, type: 1}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -41,7 +41,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .800000012, g: .800000012, b: .800000012, a: 1}
+        second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
           name: _SpecColor
@@ -49,4 +49,4 @@ Material:
       data:
         first:
           name: _ReflectColor
-        second: {r: .694029868, g: .904098868, b: 1, a: .501960814}
+        second: {r: .199300721, g: .199300721, b: .199300721, a: .635294139}
