@@ -5,7 +5,7 @@ using System.Collections;
 public class Cars : MonoBehaviour {
 	
 	public Transform[] waypoints;
-	private float speed = 20f;
+	private float speed = 10f;
 	
 	public bool isMoving {get; private set;}
 	public bool objectOnTheWay {get; private set;}

@@ -1044,7 +1044,7 @@ MonoBehaviour:
   speed: 2
   prefabRagdoll: {fileID: 100058, guid: 9ef2b9a6cdf39804eaf475f17574effc, type: 2}
   blood: {fileID: 100010, guid: c33008c1dcbc3ee44861f8b30e594f46, type: 2}
-  maximumForce: 15
+  maximumForce: 10
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1

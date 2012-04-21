@@ -4,7 +4,7 @@ using System.Collections;
 public class CameraFollowPlayer : MonoBehaviour {
 	
 	public Transform target {set; get;}
-	private Vector3 distance;
+	public Vector3 distance {set; get;}
 	
 	// Use this for initialization
 	void Start () {

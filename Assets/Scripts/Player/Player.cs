@@ -74,14 +74,16 @@ public class Player : MonoBehaviour {
 			}
 		} else {
 			if (!jump) {
+				rigidbody.useGravity = true;
 				if (rigidbody != null && (animation["Jump"].time / animation["Jump"].length) > 0.24f) {
-					float z = movement.z > 0 ? movement.z * force : 0.1f;
-					float x = movement.z > 0 ? movement.x * force : 0;
-					rigidbody.velocity = (new Vector3(x, 0.2f * force, z) * 3); 
+					float z = movement.z > 0 ? movement.z : 0.1f;
+					float x = movement.z > 0 ? movement.x : 0;
+					if (force > 30) {
+						rigidbody.velocity = (new Vector3(x * force, 0.2f * force, z * force) * 3); 
+					}
 					jump = true;
 					controller.enabled = false;
 					GetComponent<CapsuleCollider>().enabled = true;
-					rigidbody.useGravity = true;
 				}
 			}
 			if (transform.position.y < lastHeight && !animation.IsPlaying("Jump")) CallRagdoll();
