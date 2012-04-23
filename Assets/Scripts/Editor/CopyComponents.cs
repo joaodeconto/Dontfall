@@ -45,7 +45,11 @@ public class CopyComponents : ScriptableWizard
 	                {
 	                    Debug.Log("toComps.Length is " + toComps.Length + " i is " + i);
 	                    // Not good at all: EditorUtility.CopySerialized(fromComps[i], toComps[i]); // Source to Destination      
-	                    toComps[i] = fromComps[i];  // Does nothing apparently. 
+						foreach (FieldInfo f in fromComps[i].GetType().GetFields())
+						{
+							f.SetValue(toComps[i], f.GetValue(fromComps[i]));
+						}
+//	                    toComps[i] = fromComps[i];  // Does nothing apparently. 
 	                    // This doesn't work it just duplicates inside fromObject: EditorUtility.CloneComponent(fromComps[i]);
 	                    msg += "\t Add To: Increasing toObject component count to " + toComps.Length;
 	                }
@@ -62,17 +66,12 @@ public class CopyComponents : ScriptableWizard
 					//Duplicates in Source (not good either): toObject.AddComponent(EditorUtility.CloneComponent(fromComps[i]));
 					// Not good: EditorUtility.CopySerialized(fromComps[i], toComps[i]); // Source to Destination
 					
-					/*AJUSTA VALORES
-					
-					Component new_component = gameObject.AddComponent(old_component.GetType());
-					foreach (FieldInfo f in old_component.GetType().GetFields())
+					foreach (FieldInfo f in fromComps[i].GetType().GetFields())
 					{
-						f.SetValue(new_component, f.GetValue(old_component));
+						f.SetValue(toComps[i], f.GetValue(fromComps[i]));
 					}
 					
-					*/
-					
-					toComps[i] = fromComps[i]; //Does nothing.  
+					//toComps[i] = fromComps[i]; //Does nothing.  
 					// Trouble here also: EditorUtility.CloneComponent(fromComps[i]);
 					msg += "\t Cloned values.";
 	            }

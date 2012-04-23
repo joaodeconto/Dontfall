@@ -130,7 +130,7 @@ public class Player : MonoBehaviour {
 	
 	public void Jump () {
 		clicked = true;
-		force = 40;
+		force = 20;
 		animation.CrossFade("Jump");
 	}
 	
