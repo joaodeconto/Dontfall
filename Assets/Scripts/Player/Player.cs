@@ -8,7 +8,7 @@ public class Player : MonoBehaviour {
 	public float speed = 2f;
 	public GameObject prefabRagdoll;
 	public GameObject blood;
-	public float maximumForce = 10f;
+	public float maximumForce = 200f;
 	
 	private CharacterController controller;
 	private Vector3 movement;
@@ -63,7 +63,7 @@ public class Player : MonoBehaviour {
 			else {
 				animation.CrossFade("Idle");
 				if (force < maximumForce)
-					force += 0.1f;
+					force += (maximumForce / 100);
 				controller.Move(Vector3.zero);
 			}
 			if (Input.GetKeyUp(KeyCode.Space)) {
@@ -78,9 +78,8 @@ public class Player : MonoBehaviour {
 				if (rigidbody != null && (animation["Jump"].time / animation["Jump"].length) > 0.24f) {
 					float z = movement.z > 0 ? movement.z : 0.1f;
 					float x = movement.z > 0 ? movement.x : 0;
-					if (force > 30) {
-						rigidbody.velocity = (new Vector3(x * force, 0.2f * force, z * force) * 3); 
-					}
+//					rigidbody.velocity = (new Vector3(x * force, 0.2f * force, z * force) * 3); 
+					rigidbody.AddForce(new Vector3(x * force, 1f * force, z * force) * 3); 
 					jump = true;
 					controller.enabled = false;
 					GetComponent<CapsuleCollider>().enabled = true;
