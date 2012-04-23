@@ -8,7 +8,7 @@ public class Player : MonoBehaviour {
 	public float speed = 2f;
 	public GameObject prefabRagdoll;
 	public GameObject blood;
-	public float maximumForce = 10f;
+	public float maximumForce = 200f;
 	
 	private CharacterController controller;
 	private Vector3 movement;
@@ -29,7 +29,7 @@ public class Player : MonoBehaviour {
 	}
 	
 	void Update () {
-		Move ();
+		Action ();
 	}
 	
 	void OnGUI () {
@@ -46,13 +46,19 @@ public class Player : MonoBehaviour {
 		}
 	}
 	
-	void Move () {
-		if (!clicked) {
+	void Action () {
+		if (!animation.IsPlaying("Strafe")) {
+			movement.x = 0;
+		} 
+		if (movement.x == 0) {
+			animation.CrossFade("Idle");
+		}
+		controller.Move(movement);
+		/*if (!clicked) {
 			rigidbody.velocity = (new Vector3(0, 0, 0)); 
-			movement.x = -(Input.GetAxis("Horizontal") * Time.deltaTime * speed);
 			movement.z = (Input.GetAxis("Vertical") * Time.deltaTime * speed);
 			if (!Input.GetKey(KeyCode.Space)) {
-				controller.Move(new Vector3(movement.x, movement.y, 0));
+				controller.Move(new Vector3(movement.x, 0, 0));
 				//controller.Move(movement);
 				if (Input.GetAxisRaw("Horizontal") != 0) {
 					animation.CrossFade("Strafe");
@@ -63,7 +69,7 @@ public class Player : MonoBehaviour {
 			else {
 				animation.CrossFade("Idle");
 				if (force < maximumForce)
-					force += 0.1f;
+					force += (maximumForce / 100);
 				controller.Move(Vector3.zero);
 			}
 			if (Input.GetKeyUp(KeyCode.Space)) {
@@ -78,9 +84,8 @@ public class Player : MonoBehaviour {
 				if (rigidbody != null && (animation["Jump"].time / animation["Jump"].length) > 0.24f) {
 					float z = movement.z > 0 ? movement.z : 0.1f;
 					float x = movement.z > 0 ? movement.x : 0;
-					if (force > 30) {
-						rigidbody.velocity = (new Vector3(x * force, 0.2f * force, z * force) * 3); 
-					}
+//					rigidbody.velocity = (new Vector3(x * force, 0.2f * force, z * force) * 3); 
+					rigidbody.AddForce(new Vector3(x * force, 1f * force, z * force) * 3); 
 					jump = true;
 					controller.enabled = false;
 					GetComponent<CapsuleCollider>().enabled = true;
@@ -90,9 +95,15 @@ public class Player : MonoBehaviour {
 			else lastHeight = transform.position.y;
 			//movement.y -= 20f * Time.deltaTime;;
 			//controller.Move(movement);
-		}
+		}*/
 	}
 	
+	public void Move (float x) {
+		movement.x = (x * 0.025f * speed);
+		animation["Strafe"].speed = x;
+		animation["Strafe"].time = (x > 0) ? 0 : animation["Strafe"].length;
+		animation.CrossFade("Strafe");
+	}
 	
 	public void CallRagdoll () {
 		GameObject ragdoll = Instantiate(prefabRagdoll, transform.position, transform.rotation) as GameObject;
