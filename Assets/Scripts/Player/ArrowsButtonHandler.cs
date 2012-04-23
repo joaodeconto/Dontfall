@@ -18,6 +18,8 @@ public class ArrowsButtonHandler : MonoBehaviour {
 			Debug.LogError("Player Component not attached in the Arrows Button Handler script");
 			Debug.Break();
 		}
+		
+		transform.GetChild(0).animation.Stop();
 	}
 	
 	// Update is called once per frame
@@ -31,12 +33,15 @@ public class ArrowsButtonHandler : MonoBehaviour {
 					switch (arrow) {
 						case Arrows.LEFT:
 							player.Move(1f);
+							transform.GetChild(0).animation.Play();
 							break;
 						case Arrows.RIGHT:
 							player.Move(-1f);
+							transform.GetChild(0).animation.Play();
 							break;
 						case Arrows.FORWARD:
 							player.Move(0);
+							transform.GetChild(0).animation.Play();
 							break;
 						default:
 							Debug.LogWarning("Arrow Type not selected");

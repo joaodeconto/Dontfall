@@ -713,7 +713,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100064}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 61.7380409, z: 0}
+  m_LocalPosition: {x: 0, y: 61.6777573, z: .100000001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -1041,10 +1041,10 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6729c3d89f5613844ae358dab472799d, type: 1}
   m_Name: 
-  speed: .5
+  speed: 2
   prefabRagdoll: {fileID: 100058, guid: 9ef2b9a6cdf39804eaf475f17574effc, type: 2}
   blood: {fileID: 100010, guid: c33008c1dcbc3ee44861f8b30e594f46, type: 2}
-  maximumForce: 200
+  maximumForce: 20
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1
