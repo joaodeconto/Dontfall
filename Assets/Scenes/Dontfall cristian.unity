@@ -5325,6 +5325,10 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 1616913252}
+    - target: {fileID: 11400000, guid: 71d2a354a3cda5b4bb140d5ceba350c5, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 71d2a354a3cda5b4bb140d5ceba350c5, type: 2}
   m_RootGameObject: {fileID: 2012373469}
@@ -97999,7 +98003,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 117425502}
   m_GameObject: {fileID: 2012373469}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 721176b0dd6dab84694891b6446d08cb, type: 1}
   m_Name: 

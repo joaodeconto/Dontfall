@@ -33,9 +33,6 @@ public class Player : MonoBehaviour {
 	}
 	
 	void OnGUI () {
-		if (force != 0) {
-			GUILayout.Label("FORCE: " + (int)((force / maximumForce) * 100));
-		}
 	}
 	
 	void OnCollisionEnter(Collision hit) {
@@ -117,7 +114,7 @@ public class Player : MonoBehaviour {
 	
 	public void Move (float x) {
 		if (!animation.IsPlaying("Strafe")) {
-			movement.x = (x * 0.025f * speed);
+			movement.x = (x * 0.05f * speed);
 			animation["Strafe"].speed = x;
 			animation["Strafe"].time = (x > 0) ? 0 : animation["Strafe"].length;
 			animation.CrossFade("Strafe");
@@ -133,7 +130,7 @@ public class Player : MonoBehaviour {
 	
 	public void Jump () {
 		clicked = true;
-		force = 20;
+		force = 40;
 		animation.CrossFade("Jump");
 	}
 	
