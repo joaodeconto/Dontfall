@@ -5,7 +5,7 @@ public class FollowTarget : MonoBehaviour {
 
 	public Transform target;
 	
-	private Vector3 distance;
+	public Vector3 distance {get; set;}
 	// Use this for initialization
 	void Start () {
 		//if (target == null) target = GameObject.FindWithTag("Player").transform;

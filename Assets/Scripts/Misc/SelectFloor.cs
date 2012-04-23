@@ -15,6 +15,7 @@ public class SelectFloor : MonoBehaviour {
 	
 	public Transform selectFloor;
 	public GameObject player;
+	public GameObject directions;
 	
 	private Floor[] floors;
 	private CameraFollowPlayer cameraFollowPlayer;
@@ -27,6 +28,7 @@ public class SelectFloor : MonoBehaviour {
 //		}
 		
 		player.SetActiveRecursively(false);
+		directions.SetActiveRecursively(false);
 		
 		cameraFollowPlayer = GetComponent<CameraFollowPlayer>();
 		cameraFollowPlayer.enabled = false;
@@ -56,6 +58,9 @@ public class SelectFloor : MonoBehaviour {
 				cameraFollowPlayer.enabled = true;
 				cameraFollowPlayer.target = player.transform;
 				cameraFollowPlayer.distance =  (distance - player.transform.position) +
+												player.transform.position;
+				directions.SetActiveRecursively(true);
+				directions.GetComponent<FollowTarget>().distance =  (distance - player.transform.position) +
 												player.transform.position;
 				enabled = false;
 			}
