@@ -5,6 +5,7 @@ TagManager:
   tags:
   - Ragdoll
   - Car
+  - CameraArrows
   - Ground
   - Iron
   - Concrete

@@ -47,13 +47,30 @@ public class Player : MonoBehaviour {
 	}
 	
 	void Action () {
-		if (!animation.IsPlaying("Strafe")) {
-			movement.x = 0;
-		} 
-		if (movement.x == 0) {
-			animation.CrossFade("Idle");
+		if (!clicked) {
+			if (!animation.IsPlaying("Strafe")) {
+				movement.x = 0;
+			} 
+			if (movement.x == 0) {
+				animation.CrossFade("Idle");
+			}
+			controller.Move(movement);
+		} else {
+			if (!jump) {
+				rigidbody.useGravity = true;
+				if (rigidbody != null && (animation["Jump"].time / animation["Jump"].length) > 0.24f) {
+					rigidbody.AddForce(new Vector3(0, force, force) * 3); 
+					jump = true;
+					controller.enabled = false;
+					GetComponent<CapsuleCollider>().enabled = true;
+				}
+			}
+			if (transform.position.y < lastHeight && !animation.IsPlaying("Jump")) CallRagdoll();
+			else lastHeight = transform.position.y;
+			//movement.y -= 20f * Time.deltaTime;;
+			//controller.Move(movement);
 		}
-		controller.Move(movement);
+		
 		/*if (!clicked) {
 			rigidbody.velocity = (new Vector3(0, 0, 0)); 
 			movement.z = (Input.GetAxis("Vertical") * Time.deltaTime * speed);
@@ -99,10 +116,25 @@ public class Player : MonoBehaviour {
 	}
 	
 	public void Move (float x) {
-		movement.x = (x * 0.025f * speed);
-		animation["Strafe"].speed = x;
-		animation["Strafe"].time = (x > 0) ? 0 : animation["Strafe"].length;
-		animation.CrossFade("Strafe");
+		if (!animation.IsPlaying("Strafe")) {
+			movement.x = (x * 0.025f * speed);
+			animation["Strafe"].speed = x;
+			animation["Strafe"].time = (x > 0) ? 0 : animation["Strafe"].length;
+			animation.CrossFade("Strafe");
+		} 
+	}
+	
+	public float PrepareToJump () {
+		movement.x = 0;
+		if (force < maximumForce)
+			force += (maximumForce / 100);
+		return force;
+	}
+	
+	public void Jump () {
+		clicked = true;
+		force = 20;
+		animation.CrossFade("Jump");
 	}
 	
 	public void CallRagdoll () {

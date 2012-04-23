@@ -12,23 +12,39 @@ public class ArrowsButtonHandler : MonoBehaviour {
 	public Arrows arrow;
 	public Player player;
 	
+	private Camera camera;
+	
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		if (player == null) {
 			Debug.LogError("Player Component not attached in the Arrows Button Handler script");
 			Debug.Break();
 		}
+		
+		camera = GameObject.FindWithTag("CameraArrows").camera;
 		
 		transform.GetChild(0).animation.Stop();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+//		if (Input.GetMouseButton(0)) {
+//			Ray ray = Camera.mainCamera.ScreenPointToRay(Input.mousePosition);
+//			RaycastHit hit;
+//			if (Physics.Raycast(ray, out hit)) {
+//				if (hit.transform == transform) {
+//					switch (arrow) {
+//						case Arrows.FORWARD:
+//							transform.localScale = new Vector3(1, 1, 1) + (transform.localScale * (player.PrepareToJump() / 50));
+//							break;
+//					}
+//				}
+//			}
+//		}
 		if (Input.GetMouseButtonUp(0)) {
-			Ray ray = Camera.mainCamera.ScreenPointToRay(Input.mousePosition);
+			Ray ray = camera.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
 			if (Physics.Raycast(ray, out hit)) {
-				print(hit.transform.name);
 				if (hit.transform == transform) {
 					switch (arrow) {
 						case Arrows.LEFT:
@@ -40,8 +56,9 @@ public class ArrowsButtonHandler : MonoBehaviour {
 							transform.GetChild(0).animation.Play();
 							break;
 						case Arrows.FORWARD:
-							player.Move(0);
-							transform.GetChild(0).animation.Play();
+							player.Jump();
+							camera.gameObject.SetActiveRecursively(false);
+							transform.parent.gameObject.SetActiveRecursively(false);
 							break;
 						default:
 							Debug.LogWarning("Arrow Type not selected");
