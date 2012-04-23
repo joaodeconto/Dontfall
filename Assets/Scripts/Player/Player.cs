@@ -29,7 +29,7 @@ public class Player : MonoBehaviour {
 	}
 	
 	void Update () {
-		Move ();
+		Action ();
 	}
 	
 	void OnGUI () {
@@ -46,13 +46,19 @@ public class Player : MonoBehaviour {
 		}
 	}
 	
-	void Move () {
-		if (!clicked) {
+	void Action () {
+		if (!animation.IsPlaying("Strafe")) {
+			movement.x = 0;
+		} 
+		if (movement.x == 0) {
+			animation.CrossFade("Idle");
+		}
+		controller.Move(movement);
+		/*if (!clicked) {
 			rigidbody.velocity = (new Vector3(0, 0, 0)); 
-			movement.x = -(Input.GetAxis("Horizontal") * Time.deltaTime * speed);
 			movement.z = (Input.GetAxis("Vertical") * Time.deltaTime * speed);
 			if (!Input.GetKey(KeyCode.Space)) {
-				controller.Move(new Vector3(movement.x, movement.y, 0));
+				controller.Move(new Vector3(movement.x, 0, 0));
 				//controller.Move(movement);
 				if (Input.GetAxisRaw("Horizontal") != 0) {
 					animation.CrossFade("Strafe");
@@ -89,9 +95,15 @@ public class Player : MonoBehaviour {
 			else lastHeight = transform.position.y;
 			//movement.y -= 20f * Time.deltaTime;;
 			//controller.Move(movement);
-		}
+		}*/
 	}
 	
+	public void Move (float x) {
+		movement.x = (x * 0.025f * speed);
+		animation["Strafe"].speed = x;
+		animation["Strafe"].time = (x > 0) ? 0 : animation["Strafe"].length;
+		animation.CrossFade("Strafe");
+	}
 	
 	public void CallRagdoll () {
 		GameObject ragdoll = Instantiate(prefabRagdoll, transform.position, transform.rotation) as GameObject;

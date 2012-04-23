@@ -15,7 +15,7 @@ public class CameraFollowPlayer : MonoBehaviour {
 	void Update () {
         if (Input.GetKeyDown (KeyCode.Backspace)) {  
 		    Application.LoadLevel (0);  
-		}  
+		}
 		
 		if (target != null) {
 			transform.position = (target.position + distance);
