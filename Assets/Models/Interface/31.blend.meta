@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: 61a905fd2132d3d49bb5e825ef83c1b1
+guid: 96cd332dfd2a7dd4aa8164b7fa24e188
 ModelImporter:
   fileIDToRecycleName:
-    4300000: Cube
-    7400000: Default Take //// SetaJump
+    4300000: Text
+    7400000: Default Take //// 31
   serializedVersion: 10
   materials:
     importMaterials: 1
@@ -35,7 +35,7 @@ ModelImporter:
   tangentSpace:
     normalSmoothAngle: 60
     splitTangentsAcrossUV: 1
-    normalImportMode: 0
+    normalImportMode: 1
     tangentImportMode: 1
   textMetaNamesToFileIDs:
     //RootNode:

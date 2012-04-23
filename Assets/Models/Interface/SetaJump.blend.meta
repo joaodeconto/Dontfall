@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 61a905fd2132d3d49bb5e825ef83c1b1
+guid: 8cb21c2977ae45d46a8a1c9ade3172fc
 ModelImporter:
   fileIDToRecycleName:
     4300000: Cube
@@ -35,7 +35,7 @@ ModelImporter:
   tangentSpace:
     normalSmoothAngle: 60
     splitTangentsAcrossUV: 1
-    normalImportMode: 0
+    normalImportMode: 1
     tangentImportMode: 1
   textMetaNamesToFileIDs:
     //RootNode:
