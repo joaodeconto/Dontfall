@@ -43,8 +43,8 @@ public class CollisionPartOfBody : MonoBehaviour {
 			
 			float impactForce = collision.relativeVelocity.magnitude * rigidbody.mass;
 			
-			if (impactForce > ForceToApply(25) || 
-				(transform.name.Equals("Neck_R") && impactForce > ForceToApply(10)))
+			if (impactForce > ForceToApply(30) || 
+				(transform.name.Equals("Neck_R") && impactForce > ForceToApply(15)))
 				Instantiate (blood, transform.position, transform.rotation);
 			
 			if (impactForce > ForceToApply(10)) {

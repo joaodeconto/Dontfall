@@ -43,9 +43,4 @@ public class CreateMeshCollider : ScriptableObject {
 			}
 	    }
     }
-	
-	[MenuItem ("FrameworkUnity/Search")]
-    static void Search() {
-		SceneModeUtility.SearchForType(typeof(AudioSource));
-    }
 }

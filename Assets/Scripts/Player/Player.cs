@@ -56,7 +56,7 @@ public class Player : MonoBehaviour {
 			if (!jump) {
 				rigidbody.useGravity = true;
 				if (rigidbody != null && (animation["Jump"].time / animation["Jump"].length) > 0.24f) {
-					rigidbody.AddForce(new Vector3(0, force, force) * 3); 
+					rigidbody.AddForce(new Vector3(0, force, force), ForceMode.Impulse); 
 					jump = true;
 					controller.enabled = false;
 					GetComponent<CapsuleCollider>().enabled = true;
@@ -115,10 +115,10 @@ public class Player : MonoBehaviour {
 	public void Move (float x) {
 		if (!animation.IsPlaying("Strafe")) {
 			movement.x = (x * 0.05f * speed);
-			animation["Strafe"].speed = x;
-			animation["Strafe"].time = (x > 0) ? 0 : animation["Strafe"].length;
+			animation["Strafe"].speed = -x;
+			animation["Strafe"].time = (x > 0) ?  animation["Strafe"].length : 0;
 			animation.CrossFade("Strafe");
-		} 
+		} else return;
 	}
 	
 	public float PrepareToJump () {
@@ -130,7 +130,7 @@ public class Player : MonoBehaviour {
 	
 	public void Jump () {
 		clicked = true;
-		force = 20;
+		force = maximumForce;
 		animation.CrossFade("Jump");
 	}
 	
@@ -147,7 +147,7 @@ public class Player : MonoBehaviour {
 			c.Initialize(blood);
 			//if ( c.GetComponent<CharacterJoint>() != null) c.GetComponent<CharacterJoint>().breakForce = 100 * c.rigidbody.mass;
 			if ( c.isMain ) windController.Initialize(c.rigidbody);
-			if ( c.rigidbody != null ) c.rigidbody.velocity = rigidbody.velocity;
+			if ( c.rigidbody != null ) c.rigidbody.velocity = new Vector3(0, rigidbody.velocity.y, 0);
 			if ( c.rigidbody != null ) c.rigidbody.AddTorque(new Vector3(0, 0, (movement.x * force) * -10000) * c.rigidbody.mass);
 			
 		}

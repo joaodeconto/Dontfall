@@ -3,8 +3,7 @@ using UnityEditor;
 using System.Collections;
 using System.Reflection;
 
-public class CopyComponents : ScriptableWizard
-{
+public class CopyComponents : ScriptableWizard {
     public bool copyValues = true;  
     public GameObject fromObject;
     public GameObject toObject;
@@ -34,30 +33,24 @@ public class CopyComponents : ScriptableWizard
 	        msg += "\n#" + i + " is type " + t1;
 	        if (i < toComps.Length)
 	            t2 = toComps[i].GetType().Name;
-	        if (t2 != t1)
-	            {
-	                //if (copyValues)
-	                //  toObject.AddComponent(EditorUtility.CloneComponent(fromComps[i]));
-	                //else
+	        if (t2 != t1) {
 	                toObject.AddComponent(fromComps[i].GetType());
 	                toComps = toObject.GetComponents(typeof(Component));
 	                if (i<toComps.Length)
 	                {
 	                    Debug.Log("toComps.Length is " + toComps.Length + " i is " + i);
-	                    // Not good at all: EditorUtility.CopySerialized(fromComps[i], toComps[i]); // Source to Destination      
 						foreach (FieldInfo f in fromComps[i].GetType().GetFields())
 						{
 							f.SetValue(toComps[i], f.GetValue(fromComps[i]));
 						}
-//	                    toComps[i] = fromComps[i];  // Does nothing apparently. 
 	                    // This doesn't work it just duplicates inside fromObject: EditorUtility.CloneComponent(fromComps[i]);
 	                    msg += "\t Add To: Increasing toObject component count to " + toComps.Length;
 	                }
 	                else
 	                {
-	                        msg += "\t Problem: i is " + i + " but toComps is only " + toComps.Length;
+	                	msg += "\t Problem: i is " + i + " but toComps is only " + toComps.Length;
 	                }
-	            }
+            }
 	        else
 	        {
 	            if (copyValues)
