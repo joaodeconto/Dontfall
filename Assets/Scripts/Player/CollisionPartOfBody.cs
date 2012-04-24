@@ -12,6 +12,7 @@ public class CollisionPartOfBody : MonoBehaviour {
 	public int fracture {private set; get;}
 	
 	private float timer;
+	private bool unconscious;
 	
 	void Update () {
 		if (isMain) {
@@ -26,7 +27,7 @@ public class CollisionPartOfBody : MonoBehaviour {
 			}
 			if (rigidbody.velocity.magnitude == 0) EndGame ();
 			
-			if (rigidbody.velocity.magnitude > 5) {
+			if (rigidbody.velocity.magnitude > 5 && !unconscious) {
 				GetComponentInChildren<AudioSource>().volume = Mathf.Clamp( rigidbody.velocity.magnitude / 100,
 																			0, 1);
 			} else {
@@ -39,13 +40,24 @@ public class CollisionPartOfBody : MonoBehaviour {
 		if (!rigidbody)
 			return;
 		
+		float impactForce = collision.relativeVelocity.magnitude * rigidbody.mass;
+		
+		if (collision.transform.tag.Equals("Car")) {
+			collision.transform.GetComponent<CarDamage>().OnMeshForce(transform.position, impactForce);
+		}
+			
 		if (!collision.transform.tag.Equals("Player")) {
 			
-			float impactForce = collision.relativeVelocity.magnitude * rigidbody.mass;
-			
-			if (impactForce > ForceToApply(30) || 
-				(transform.name.Equals("Neck_R") && impactForce > ForceToApply(15)))
+			if (impactForce > ForceToApply(30))
 				Instantiate (blood, transform.position, transform.rotation);
+			
+			if (transform.name.Equals("Neck_R") && impactForce > ForceToApply(15)) {
+				Instantiate (blood, transform.position, transform.rotation);
+				if (!unconscious) {
+					unconscious = true;
+					SendMessageUpwards("Unconscious");
+				}
+			}
 			
 			if (impactForce > ForceToApply(10)) {
 				fracture++;
@@ -76,7 +88,8 @@ public class CollisionPartOfBody : MonoBehaviour {
 		return (maxForce * rigidbody.mass); /*/ (fracture + 1);*/ 
 	}
 	
-	void NumberOfFractures () {
+	void Unconscious () {
+		unconscious = true;
 	}
 	
 	void EndGame () {
