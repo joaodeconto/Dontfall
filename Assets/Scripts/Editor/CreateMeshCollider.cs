@@ -14,6 +14,18 @@ public class CreateMeshCollider : ScriptableObject {
 	    }
     }
 	
+	[MenuItem ("FrameworkUnity/Colliders/AddMeshColliderConvex")]
+    static void AddMeshColliderConvex() {
+	    foreach (Transform transform in Selection.transforms) {
+			MeshFilter[] meshs = transform.GetComponentsInChildren<MeshFilter>();
+			foreach (MeshFilter mesh in meshs) {
+				mesh.gameObject.AddComponent<MeshCollider>();
+				mesh.GetComponent<MeshCollider>().sharedMesh = mesh.sharedMesh;
+				mesh.GetComponent<MeshCollider>().convex = true;
+			}
+	    }
+    }
+	
 	[MenuItem ("FrameworkUnity/Colliders/DeleteMeshCollider")]
     static void DeleteMeshCollider() {
 	    foreach (Transform transform in Selection.transforms) {
@@ -42,10 +54,5 @@ public class CreateMeshCollider : ScriptableObject {
 				DestroyImmediate(col);
 			}
 	    }
-    }
-	
-	[MenuItem ("FrameworkUnity/Search")]
-    static void Search() {
-		SceneModeUtility.SearchForType(typeof(AudioSource));
     }
 }
