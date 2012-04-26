@@ -24,7 +24,7 @@ public class CollisionPartOfBody : MonoBehaviour {
 	void Update () {
 		if (isMain) {
 			if (rigidbody.velocity.magnitude > higherVelocity) higherVelocity = rigidbody.velocity.magnitude;
-			if (rigidbody.velocity.magnitude < 1) {
+			if (rigidbody.velocity.magnitude < 2) {
 				timer += Time.deltaTime;
 				if (timer > 2f) {
 					EndGame ();
@@ -55,11 +55,12 @@ public class CollisionPartOfBody : MonoBehaviour {
 		}
 			
 		if (!collision.transform.tag.Equals("Player")) {
-			if (impactForce > ForceToApply(30))
-				Instantiate (blood, transform.position, transform.rotation);
+			if (impactForce > ForceToApply(30)) {
+				InstantiateBlood ();
+			}
 			
 			if (transform.name.Equals("Neck_R") && impactForce > ForceToApply(15)) {
-				Instantiate (blood, transform.position, transform.rotation);
+				InstantiateBlood ();
 				if (!unconscious) {
 					unconscious = true;
 					SendMessageUpwards("Unconscious");
@@ -70,11 +71,11 @@ public class CollisionPartOfBody : MonoBehaviour {
 				GameObject brokenBone = new GameObject("Broken Bone");
 				brokenBone.AddComponent<AudioSource>();
 				brokenBone.audio.dopplerLevel = 0;
+				brokenBone.audio.volume = 0.1f;
 				brokenBone.audio.playOnAwake = false;
 				brokenBone.audio.clip = Resources.LoadAssetAtPath("Assets/Sounds/Bone Broken.mp3", typeof(AudioClip)) as AudioClip;
 				brokenBone.audio.Play();
-//				brokenBone.AddComponent<AutoDestroy>();
-//				brokenBone.GetComponent<AutoDestroy>().timer = brokenBone.audio.time + 0.1f;
+				brokenBone.AddComponent<AutoDestroy>();
 				brokenBone.transform.position = transform.position;
 				brokenBone.transform.parent = transform;
 				fracture++;
@@ -107,6 +108,11 @@ public class CollisionPartOfBody : MonoBehaviour {
 	
 	void Unconscious () {
 		unconscious = true;
+	}
+	
+	void InstantiateBlood () {
+		GameObject GO = Instantiate (blood, transform.position, transform.rotation) as GameObject;
+		GO.transform.parent = transform;
 	}
 	
 	void EndGame () {

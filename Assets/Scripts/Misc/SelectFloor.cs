@@ -41,7 +41,6 @@ public class SelectFloor : MonoBehaviour {
 					i++;
 				}
 			}
-			print(System.Convert.ToInt32(selectFloor.GetChild(i).name));
 			floors[j] = new Floor(selectFloor.GetChild(i).name, selectFloor.GetChild(i).localPosition);
 		}
 		
