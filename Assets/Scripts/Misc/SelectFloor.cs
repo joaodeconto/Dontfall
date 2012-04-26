@@ -34,11 +34,18 @@ public class SelectFloor : MonoBehaviour {
 		cameraFollowPlayer.enabled = false;
 		
 		floors = new Floor[selectFloor.childCount];
-		int i = 0;
-		foreach (Transform childFloors in selectFloor.transform) {
-			floors[i] = new Floor(childFloors.name, childFloors.localPosition);
-			i++;
+		for (int j = 0; j < floors.Length; j++) {
+			int i = 0;
+			foreach (Transform childFloors in selectFloor.transform) {
+				if (System.Convert.ToInt32(selectFloor.GetChild(j).name) > System.Convert.ToInt32(childFloors.name)) {
+					i++;
+				}
+			}
+			print(System.Convert.ToInt32(selectFloor.GetChild(i).name));
+			floors[j] = new Floor(selectFloor.GetChild(i).name, selectFloor.GetChild(i).localPosition);
 		}
+		
+		System.Array.Reverse(floors);
 		
 	}
 	
@@ -50,17 +57,17 @@ public class SelectFloor : MonoBehaviour {
 //		}
 		
 		GUILayout.BeginArea(new Rect(10, 10, 200, 1000));
-		foreach (Floor floor in floors) {
-			if (GUILayout.Button(floor.number, GUILayout.Width(40), GUILayout.Height(30))) {
+		for (int i = 0; i < floors.Length; i++) {
+			if (GUILayout.Button(floors[i].number, GUILayout.Width(40), GUILayout.Height(30))) {
 				Vector3 distance = (cameraFollowPlayer.transform.position - player.transform.position);
-				player.transform.position = floor.position;
+				player.transform.position = floors[i].position;
 				player.SetActiveRecursively(true);
 				cameraFollowPlayer.enabled = true;
 				cameraFollowPlayer.target = player.transform;
-				cameraFollowPlayer.distance =  (distance - player.transform.position) +
+				cameraFollowPlayer.distance = (distance - player.transform.position) +
 												player.transform.position;
 				directions.SetActiveRecursively(true);
-				directions.GetComponent<FollowTarget>().distance =  (distance - player.transform.position) +
+				directions.GetComponent<FollowTarget>().distance = (distance - player.transform.position) +
 												player.transform.position;
 				enabled = false;
 			}

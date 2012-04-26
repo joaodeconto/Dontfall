@@ -13,6 +13,13 @@ public class CollisionPartOfBody : MonoBehaviour {
 	
 	private float timer;
 	private bool unconscious;
+	private AudioSource voice;
+	
+	void Start () {
+		if (isMain) {
+			voice = GetComponentInChildren<AudioSource>();
+		}
+	}
 	
 	void Update () {
 		if (isMain) {
@@ -28,10 +35,10 @@ public class CollisionPartOfBody : MonoBehaviour {
 			if (rigidbody.velocity.magnitude == 0) EndGame ();
 			
 			if (rigidbody.velocity.magnitude > 5 && !unconscious) {
-				GetComponentInChildren<AudioSource>().volume = Mathf.Clamp( rigidbody.velocity.magnitude / 100,
+				voice.volume = Mathf.Clamp( rigidbody.velocity.magnitude / 100,
 																			0, 1);
 			} else {
-				GetComponentInChildren<AudioSource>().volume = 0;
+				voice.volume = 0;
 			}
 		}
 	}
@@ -43,11 +50,11 @@ public class CollisionPartOfBody : MonoBehaviour {
 		float impactForce = collision.relativeVelocity.magnitude * rigidbody.mass;
 		
 		if (collision.transform.tag.Equals("Car")) {
-			collision.transform.GetComponent<CarDamage>().OnMeshForce(transform.position, impactForce);
+			print(-impactForce/11);
+			collision.transform.GetComponent<CarDamage>().OnMeshForce(transform.position, -impactForce/11);
 		}
 			
 		if (!collision.transform.tag.Equals("Player")) {
-			
 			if (impactForce > ForceToApply(30))
 				Instantiate (blood, transform.position, transform.rotation);
 			
@@ -60,6 +67,16 @@ public class CollisionPartOfBody : MonoBehaviour {
 			}
 			
 			if (impactForce > ForceToApply(10)) {
+				GameObject brokenBone = new GameObject("Broken Bone");
+				brokenBone.AddComponent<AudioSource>();
+				brokenBone.audio.dopplerLevel = 0;
+				brokenBone.audio.playOnAwake = false;
+				brokenBone.audio.clip = Resources.LoadAssetAtPath("Assets/Sounds/Bone Broken.mp3", typeof(AudioClip)) as AudioClip;
+				brokenBone.audio.Play();
+//				brokenBone.AddComponent<AutoDestroy>();
+//				brokenBone.GetComponent<AutoDestroy>().timer = brokenBone.audio.time + 0.1f;
+				brokenBone.transform.position = transform.position;
+				brokenBone.transform.parent = transform;
 				fracture++;
 			}
 		}
