@@ -11,7 +11,7 @@ public class CollisionPartOfBody : MonoBehaviour {
 	public GameObject blood {set; get;}
 	public int fracture {private set; get;}
 	
-	private float timer;
+	private float fallTime, timer;
 	private bool unconscious;
 	private AudioSource voice;
 	
@@ -23,6 +23,7 @@ public class CollisionPartOfBody : MonoBehaviour {
 	
 	void Update () {
 		if (isMain) {
+			fallTime += Time.deltaTime;
 			if (rigidbody.velocity.magnitude > higherVelocity) higherVelocity = rigidbody.velocity.magnitude;
 			if (rigidbody.velocity.magnitude < 2) {
 				timer += Time.deltaTime;
@@ -117,7 +118,7 @@ public class CollisionPartOfBody : MonoBehaviour {
 	
 	void EndGame () {
 		CollisionPartOfBody[] collisions = transform.parent.GetComponentsInChildren<CollisionPartOfBody>();
-		GameObject.Find("Scorer").GetComponent<Scorer>().CalculatePoints(higherVelocity, collisions);
+		GameObject.Find("Scorer").GetComponent<Scorer>().CalculatePoints(higherVelocity, fallTime, collisions);
 		GameObject.Find("WindAudio").audio.volume = 0.1f;
 		enabled = false;
 	}

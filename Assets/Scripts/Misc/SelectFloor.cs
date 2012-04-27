@@ -19,13 +19,27 @@ public class SelectFloor : MonoBehaviour {
 	
 	private Floor[] floors;
 	private CameraFollowPlayer cameraFollowPlayer;
+	private int enableLevels;
+	
+	#region Rects and GUIStyles
+	private Rect windowLevel;
+	private float widthButton, heightButton, spaceButton;
+	private GUIStyle buttonStyle;
+	#endregion
 	
 	// Use this for initialization
 	void Start () {
-//		if (selectFloor != null) {
-//			Debug.LogError("Not attached SelectFloor in script");
-//			return;
-//		}
+		
+		ScreenUtils.Initialize(960, 600);
+		
+		buttonStyle = new GUIStyle();
+		buttonStyle.normal.textColor = Color.white;
+		buttonStyle.alignment = TextAnchor.MiddleCenter;
+		buttonStyle.fontStyle = FontStyle.Bold;
+		
+		AdjustScreen ();
+		
+		enableLevels = PlayerPrefs.GetInt("Enable Levels", 0);
 		
 		player.SetActiveRecursively(false);
 		directions.SetActiveRecursively(false);
@@ -44,20 +58,22 @@ public class SelectFloor : MonoBehaviour {
 			floors[j] = new Floor(selectFloor.GetChild(i).name, selectFloor.GetChild(i).localPosition);
 		}
 		
-		System.Array.Reverse(floors);
-		
+		//System.Array.Reverse(floors);
 	}
+	
 	
 	// Update is called once per frame
 	void OnGUI () {
-//		if (selectFloor != null) {
-//			Debug.LogError("Not attached SelectFloor in script");
-//			return;
-//		}
+		if (ScreenUtils.ScreenSizeChange()) {
+			AdjustScreen ();
+		}
 		
-		GUILayout.BeginArea(new Rect(10, 10, 200, 1000));
+		GUILayout.BeginArea(windowLevel);
+		int j = 0;
 		for (int i = 0; i < floors.Length; i++) {
-			if (GUILayout.Button(floors[i].number, GUILayout.Width(40), GUILayout.Height(30))) {
+			if (i > enableLevels) GUI.enabled = false;
+			if (j == 0) GUILayout.BeginHorizontal();
+			if (GUILayout.Button(floors[i].number, buttonStyle, GUILayout.Width(widthButton), GUILayout.Height(heightButton))) {
 				Vector3 distance = (cameraFollowPlayer.transform.position - player.transform.position);
 				player.transform.position = floors[i].position;
 				player.SetActiveRecursively(true);
@@ -68,9 +84,24 @@ public class SelectFloor : MonoBehaviour {
 				directions.SetActiveRecursively(true);
 				directions.GetComponent<FollowTarget>().distance = (distance - player.transform.position) +
 												player.transform.position;
+				PlayerPrefs.SetInt("Actual Level", i);
 				enabled = false;
 			}
+			j++;
+			if (j == 5 || i == floors.Length-1) {
+				GUILayout.EndHorizontal();
+				j = 0;
+			}
+			GUILayout.Space(spaceButton);
 		}
 		GUILayout.EndArea();
+	}
+	
+	void AdjustScreen () {
+		windowLevel = ScreenUtils.ScaledRectInSenseHeight(50, 10, 960, 600);
+		widthButton = ScreenUtils.ScaleHeight(120);
+		heightButton = ScreenUtils.ScaleHeight(100);
+		spaceButton = ScreenUtils.ScaleHeight(50);
+		buttonStyle.fontSize = ScreenUtils.ScaleHeightInt(32);
 	}
 }
