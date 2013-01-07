@@ -81,6 +81,8 @@ public class CarDamage : MonoBehaviour
        
         	meshfilters[j].mesh.vertices = verts;
         	meshfilters[j].mesh.RecalculateBounds();
+        	meshfilters[j].mesh.RecalculateNormals();
+        	meshfilters[j].mesh.MarkDynamic();
         }
 	} 
 }
