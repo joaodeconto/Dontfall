@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: HighRiseResidential0097_2_S
-  m_Shader: {fileID: 3, guid: 0000000000000000e000000000000000, type: 0}
+  m_Shader: {fileID: 4, guid: 0000000000000000e000000000000000, type: 0}
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -15,14 +15,21 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 8d6ddd6fd3a61564ebd5e375797bea6c, type: 1}
+          m_Texture: {fileID: 2800000, guid: acfa294c282323f4b80b9400c9668bd4, type: 1}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BumpMap
+        second:
+          m_Texture: {fileID: 2800000, guid: 986bff28945ff4847be246e95d43e9a0, type: 1}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
           name: _Shininess
-        second: .078125
+        second: .0300000031
     m_Colors:
       data:
         first:
@@ -31,4 +38,4 @@ Material:
       data:
         first:
           name: _SpecColor
-        second: {r: .5, g: .5, b: .5, a: 1}
+        second: {r: .99253732, g: .963530898, b: .474047691, a: 1}

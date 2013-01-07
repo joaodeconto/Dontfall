@@ -1,0 +1,15 @@
+MadeOf Wood
+ObjectSpaceNormalMaps
+
+PhongEnvironment
+{
+	DiffuseMap C:/Users/IAN/Documents/GitHub/Dontfall/Assets/Models/mendigo/Materials/roupasDifusa.psd
+	NormalMap C:/Users/IAN/Documents/GitHub/Dontfall/Assets/Models/mendigo/Materials/roupasNormal.psd
+	UseSpecular
+	SpecularExponent 169.612
+	SpecularColor 0.0777085 0.0951259 0.172996
+	SpecularIntensity 0.518915
+	Fresnel 1.84844
+	AlphaTest 0.0160716
+}
+

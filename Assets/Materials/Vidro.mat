@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Vidro
-  m_Shader: {fileID: 20, guid: 0000000000000000e000000000000000, type: 0}
+  m_Shader: {fileID: 206, guid: 0000000000000000e000000000000000, type: 0}
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -15,7 +15,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: e10173c9e3c67ad42a51e447b5b47c30, type: 1}
+          m_Texture: {fileID: 2800000, guid: 17680dc3bf8f74b498b01cf1481e2593, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -27,9 +27,58 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _Tex
+        second:
+          m_Texture: {fileID: 8900000, guid: 820b9a43bfe910e449148ad4502b4068, type: 2}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _Cube
         second:
-          m_Texture: {fileID: 8900000, guid: 881a4a076a4e8d14491caa2afdcd0bc7, type: 1}
+          m_Texture: {fileID: 8900000, guid: 881a4a076a4e8d14491caa2afdcd0bc7, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _FrontTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BackTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _LeftTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _RightTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _UpTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DownTex
+        second:
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -37,6 +86,10 @@ Material:
         first:
           name: _Shininess
         second: .078125
+      data:
+        first:
+          name: _InvFade
+        second: 3
     m_Colors:
       data:
         first:
@@ -50,3 +103,7 @@ Material:
         first:
           name: _ReflectColor
         second: {r: .199300721, g: .199300721, b: .199300721, a: .635294139}
+      data:
+        first:
+          name: _Tint
+        second: {r: .345098048, g: .345098048, b: .345098048, a: .113725491}
