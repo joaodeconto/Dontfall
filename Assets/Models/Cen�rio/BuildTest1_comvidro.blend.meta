@@ -14,7 +14,7 @@ ModelImporter:
   serializedVersion: 10
   materials:
     importMaterials: 1
-    materialName: 0
+    materialName: 1
     materialSearch: 1
   animations:
     generateAnimations: 3
@@ -55,58 +55,6 @@ ModelImporter:
       data:
         first: 111
         second: 605fa900
-    Cylinder:
-      data:
-        first: 1
-        second: aa860100
-      data:
-        first: 4
-        second: 8a1a0600
-      data:
-        first: 23
-        second: 68182300
-      data:
-        first: 33
-        second: a85a3200
-    Cylinder_001:
-      data:
-        first: 1
-        second: ac860100
-      data:
-        first: 4
-        second: 8c1a0600
-      data:
-        first: 23
-        second: 6a182300
-      data:
-        first: 33
-        second: aa5a3200
-    Cylinder_002:
-      data:
-        first: 1
-        second: b0860100
-      data:
-        first: 4
-        second: 901a0600
-      data:
-        first: 23
-        second: 6e182300
-      data:
-        first: 33
-        second: ae5a3200
-    Cylinder_003:
-      data:
-        first: 1
-        second: ae860100
-      data:
-        first: 4
-        second: 8e1a0600
-      data:
-        first: 23
-        second: 6c182300
-      data:
-        first: 33
-        second: ac5a3200
     Esquadria_000:
       data:
         first: 1
