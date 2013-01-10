@@ -19,7 +19,8 @@ public class Scorer : MonoBehaviour {
 		titleStyle.alignment = TextAnchor.MiddleCenter;
 	}
 	
-	void OnGUI () {
+	void OnGUI ()
+	{
 		GUILayout.BeginArea(new Rect(10, 10, 200, 400), new GUIStyle("box"));
 			//string higher = System.String.Format("{0:0,0}", higherVelocity);
 			GUILayout.Label("SCORE:", titleStyle);
@@ -33,7 +34,8 @@ public class Scorer : MonoBehaviour {
 		GUILayout.EndArea();
 	}
 	
-	public void CalculatePoints (float higherVelocity, float fallTime, CollisionPartOfBody[] collisions) {
+	public void CalculatePoints (float higherVelocity, float fallTime, CollisionPartOfBody[] collisions)
+	{
 		this.fallTime = fallTime;
 		this.higherVelocity = higherVelocity;
 		this.collisions = collisions;
@@ -45,8 +47,9 @@ public class Scorer : MonoBehaviour {
 				Destroy(collision.GetComponent<CharacterJoint>());
 			Destroy(collision.rigidbody);
 			totalFractures += collision.fracture;
-			if (collision.fracture != 0)
-				pointsFloat *= collision.fracture;
+//			if (collision.fracture != 0)
+//				pointsFloat *= collision.fracture;
+			pointsFloat += collision.fracture * 50f;
 			collision.enabled = false;
 		}
 		points = (int)pointsFloat + ExtraPoints;
