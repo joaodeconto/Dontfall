@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Scorer : MonoBehaviour {
 	
+	public int ExtraPoints = 0;
+	
 	private int points;
 	private float higherVelocity, fallTime, pointsFloat;
 	private CollisionPartOfBody[] collisions;
@@ -47,11 +49,12 @@ public class Scorer : MonoBehaviour {
 				pointsFloat *= collision.fracture;
 			collision.enabled = false;
 		}
-		points = (int)pointsFloat;
+		points = (int)pointsFloat + ExtraPoints;
 		int actualLevel = PlayerPrefs.GetInt("Actual Level", 0);
 		int enableLevels = PlayerPrefs.GetInt("Enable Levels", 0);
 		actualLevel++;
-		if (actualLevel > enableLevels) {
+		if (actualLevel > enableLevels)
+		{
 			PlayerPrefs.SetInt("Enable Levels", actualLevel);
 		}
 		enabled = true;

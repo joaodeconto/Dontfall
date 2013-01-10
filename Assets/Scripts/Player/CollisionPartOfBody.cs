@@ -55,11 +55,11 @@ public class CollisionPartOfBody : MonoBehaviour {
 		
 		float impactForce = collision.relativeVelocity.magnitude * rigidbody.mass;
 		
-		if (collision.transform.CompareTag("Car"))
-		{
-			print(-impactForce/11);
-			collision.transform.GetComponent<CarDamage>().OnMeshForce(transform.position, -impactForce/11);
-		}
+//		if (collision.transform.CompareTag("Car"))
+//		{
+//			print(-impactForce/11);
+//			collision.transform.GetComponent<CarDamage>().OnMeshForce(transform.position, -impactForce);
+//		}
 			
 		if (!collision.transform.CompareTag("Player") && !collision.transform.CompareTag("Ragdoll")) {
 			if (impactForce > ForceToApply(30)) {
@@ -74,7 +74,7 @@ public class CollisionPartOfBody : MonoBehaviour {
 				}
 			}
 			
-			if (impactForce > ForceToApply(10)) {
+			if (impactForce > ForceToApply(10-fracture)) {
 				GameObject brokenBone = new GameObject("Broken Bone");
 				brokenBone.AddComponent<AudioSource>();
 				brokenBone.audio.dopplerLevel = 0;
@@ -110,6 +110,7 @@ public class CollisionPartOfBody : MonoBehaviour {
 	}
 	
 	float ForceToApply (float maxForce) {
+		if (maxForce < 0f) maxForce = 0f;
 		return (maxForce * rigidbody.mass); /*/ (fracture + 1);*/ 
 	}
 	
