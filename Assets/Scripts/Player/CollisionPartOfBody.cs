@@ -16,7 +16,8 @@ public class CollisionPartOfBody : MonoBehaviour {
 	private AudioSource voice;
 	
 	void Start () {
-		if (isMain) {
+		if (isMain)
+		{
 			voice = GetComponentInChildren<AudioSource>();
 		}
 	}
@@ -42,20 +43,25 @@ public class CollisionPartOfBody : MonoBehaviour {
 				voice.volume = 0;
 			}
 		}
+		if (rigidbody.velocity.y < -100f)
+		{
+			rigidbody.velocity = new Vector3(rigidbody.velocity.x, -100f, rigidbody.velocity.z);
+		}
 	}
 	
-	void OnCollisionEnter (Collision collision) {
-		if (!rigidbody)
-			return;
+	void OnCollisionEnter (Collision collision)
+	{
+		if (!rigidbody) return;
 		
 		float impactForce = collision.relativeVelocity.magnitude * rigidbody.mass;
 		
-		if (collision.transform.tag.Equals("Car")) {
+		if (collision.transform.CompareTag("Car"))
+		{
 			print(-impactForce/11);
 			collision.transform.GetComponent<CarDamage>().OnMeshForce(transform.position, -impactForce/11);
 		}
 			
-		if (!collision.transform.tag.Equals("Player")) {
+		if (!collision.transform.CompareTag("Player") && !collision.transform.CompareTag("Ragdoll")) {
 			if (impactForce > ForceToApply(30)) {
 				InstantiateBlood ();
 			}

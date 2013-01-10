@@ -62,7 +62,7 @@ public class Player : MonoBehaviour {
 					GetComponent<CapsuleCollider>().enabled = true;
 				}
 			}
-			if (transform.position.y < lastHeight && !animation.IsPlaying("Jump")) CallRagdoll();
+			if (transform.position.y <= lastHeight && !animation.IsPlaying("Jump")) CallRagdoll();
 			else lastHeight = transform.position.y;
 			//movement.y -= 20f * Time.deltaTime;;
 			//controller.Move(movement);

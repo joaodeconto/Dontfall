@@ -13,7 +13,7 @@ public class CarDamage : MonoBehaviour
 	private MeshFilter[] meshfilters;
 	private float sqrDemRange;
 
-	public void Start()
+	void Awake()
 	{
         if(optionalMeshList.Length>0)
         	meshfilters = optionalMeshList;
@@ -23,7 +23,7 @@ public class CarDamage : MonoBehaviour
         sqrDemRange = demolutionRange*demolutionRange;
 	}
 	
-	public void OnCollisionEnter( Collision collision ) 
+	/*public void OnCollisionEnter( Collision collision ) 
 	{
 		Vector3 colRelVel = collision.relativeVelocity;
 		colRelVel.y *= YforceDamp;
@@ -36,7 +36,7 @@ public class CarDamage : MonoBehaviour
 		OnMeshForce( collision.contacts[0].point, Mathf.Clamp01(colStrength/maxCollisionStrength) );
 		//Debug.DrawLine(collision.contacts[0].point, transform.position, Color.red);
 		//Debug.Break();
-	}
+	}*/
 	
 	// if called by SendMessage(), we only have 1 param
 	public void OnMeshForce( Vector4 originPosAndForce )

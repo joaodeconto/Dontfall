@@ -1,25 +1,94 @@
 fileFormatVersion: 2
 guid: 1209ad42a64b777429d6b5c8882a1e0b
 ModelImporter:
+  serializedVersion: 15
   fileIDToRecycleName:
+    100000: Thigh_R
+    100002: Foot_L
+    100004: Shin_L
+    100006: Shin_R
+    100008: Thigh_L
+    100010: Forearm_R_002_R
+    100012: Forearm_R_001_R
+    100014: Mit1_R_001_R
+    100016: Mit1_R
+    100018: Hand_R
+    100020: Forearm_R
+    100022: UpperArm_R
+    100024: Shoulder_R
+    100026: Forearm_L_002_L
+    100028: Forearm_L_001_L
+    100030: bengala
+    100032: Mit1_L_001_L
+    100034: Mit1_L
+    100036: Hand_L
+    100038: Forearm_L
+    100040: UpperArm_L
+    100042: Shoulder_L
+    100044: Neck_R_002
+    100046: Neck_R_001
+    100048: Head_R
+    100050: Neck_R
+    100052: Torso_R
+    100054: Pelvis_R
+    100056: Rigify
+    100058: Humano_LOW
+    100060: Cube
+    100062: //RootNode
+    100064: Foot_R
+    400000: Thigh_R
+    400002: Foot_L
+    400004: Shin_L
+    400006: Shin_R
+    400008: Thigh_L
+    400010: Forearm_R_002_R
+    400012: Forearm_R_001_R
+    400014: Mit1_R_001_R
+    400016: Mit1_R
+    400018: Hand_R
+    400020: Forearm_R
+    400022: UpperArm_R
+    400024: Shoulder_R
+    400026: Forearm_L_002_L
+    400028: Forearm_L_001_L
+    400030: bengala
+    400032: Mit1_L_001_L
+    400034: Mit1_L
+    400036: Hand_L
+    400038: Forearm_L
+    400040: UpperArm_L
+    400042: Shoulder_L
+    400044: Neck_R_002
+    400046: Neck_R_001
+    400048: Head_R
+    400050: Neck_R
+    400052: Torso_R
+    400054: Pelvis_R
+    400056: Rigify
+    400058: Humano_LOW
+    400060: Cube
+    400062: //RootNode
+    400064: Foot_R
     4300000: Cube
     4300002: Humano_LOW
-    7400000: Default Take //// Human RagdollMesh
-  serializedVersion: 10
+    7400000: Default Take
+    11100000: //RootNode
+    13700000: Humano_LOW
+    13700002: Cube
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
-    generateAnimations: 3
+    legacyGenerateAnimations: 4
     bakeSimulation: 0
-    splitAnimations: 1
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
     animationWrapMode: 0
     clipAnimations: []
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
@@ -28,7 +97,7 @@ ModelImporter:
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMesh: 0
+    optimizeMeshForGPU: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -38,244 +107,21 @@ ModelImporter:
     splitTangentsAcrossUV: 1
     normalImportMode: 0
     tangentImportMode: 1
-  textMetaNamesToFileIDs:
-    //RootNode:
-      data:
-        first: 1
-        second: de860100
-      data:
-        first: 4
-        second: be1a0600
-      data:
-        first: 111
-        second: 605fa900
-    Cube:
-      data:
-        first: 1
-        second: dc860100
-      data:
-        first: 4
-        second: bc1a0600
-      data:
-        first: 137
-        second: a20bd100
-    Foot_L:
-      data:
-        first: 1
-        second: a2860100
-      data:
-        first: 4
-        second: 821a0600
-    Foot_R:
-      data:
-        first: 1
-        second: e0860100
-      data:
-        first: 4
-        second: c01a0600
-    Forearm_L:
-      data:
-        first: 1
-        second: c6860100
-      data:
-        first: 4
-        second: a61a0600
-    Forearm_L_001_L:
-      data:
-        first: 1
-        second: bc860100
-      data:
-        first: 4
-        second: 9c1a0600
-    Forearm_L_002_L:
-      data:
-        first: 1
-        second: ba860100
-      data:
-        first: 4
-        second: 9a1a0600
-    Forearm_R:
-      data:
-        first: 1
-        second: b4860100
-      data:
-        first: 4
-        second: 941a0600
-    Forearm_R_001_R:
-      data:
-        first: 1
-        second: ac860100
-      data:
-        first: 4
-        second: 8c1a0600
-    Forearm_R_002_R:
-      data:
-        first: 1
-        second: aa860100
-      data:
-        first: 4
-        second: 8a1a0600
-    Hand_L:
-      data:
-        first: 1
-        second: c4860100
-      data:
-        first: 4
-        second: a41a0600
-    Hand_R:
-      data:
-        first: 1
-        second: b2860100
-      data:
-        first: 4
-        second: 921a0600
-    Head_R:
-      data:
-        first: 1
-        second: d0860100
-      data:
-        first: 4
-        second: b01a0600
-    Humano_LOW:
-      data:
-        first: 1
-        second: da860100
-      data:
-        first: 4
-        second: ba1a0600
-      data:
-        first: 137
-        second: a00bd100
-    Mit1_L:
-      data:
-        first: 1
-        second: c2860100
-      data:
-        first: 4
-        second: a21a0600
-    Mit1_L_001_L:
-      data:
-        first: 1
-        second: c0860100
-      data:
-        first: 4
-        second: a01a0600
-    Mit1_R:
-      data:
-        first: 1
-        second: b0860100
-      data:
-        first: 4
-        second: 901a0600
-    Mit1_R_001_R:
-      data:
-        first: 1
-        second: ae860100
-      data:
-        first: 4
-        second: 8e1a0600
-    Neck_R:
-      data:
-        first: 1
-        second: d2860100
-      data:
-        first: 4
-        second: b21a0600
-    Neck_R_001:
-      data:
-        first: 1
-        second: ce860100
-      data:
-        first: 4
-        second: ae1a0600
-    Neck_R_002:
-      data:
-        first: 1
-        second: cc860100
-      data:
-        first: 4
-        second: ac1a0600
-    Pelvis_R:
-      data:
-        first: 1
-        second: d6860100
-      data:
-        first: 4
-        second: b61a0600
-    Rigify:
-      data:
-        first: 1
-        second: d8860100
-      data:
-        first: 4
-        second: b81a0600
-    Shin_L:
-      data:
-        first: 1
-        second: a4860100
-      data:
-        first: 4
-        second: 841a0600
-    Shin_R:
-      data:
-        first: 1
-        second: a6860100
-      data:
-        first: 4
-        second: 861a0600
-    Shoulder_L:
-      data:
-        first: 1
-        second: ca860100
-      data:
-        first: 4
-        second: aa1a0600
-    Shoulder_R:
-      data:
-        first: 1
-        second: b8860100
-      data:
-        first: 4
-        second: 981a0600
-    Thigh_L:
-      data:
-        first: 1
-        second: a8860100
-      data:
-        first: 4
-        second: 881a0600
-    Thigh_R:
-      data:
-        first: 1
-        second: a0860100
-      data:
-        first: 4
-        second: 801a0600
-    Torso_R:
-      data:
-        first: 1
-        second: d4860100
-      data:
-        first: 4
-        second: b41a0600
-    UpperArm_L:
-      data:
-        first: 1
-        second: c8860100
-      data:
-        first: 4
-        second: a81a0600
-    UpperArm_R:
-      data:
-        first: 1
-        second: b6860100
-      data:
-        first: 4
-        second: 961a0600
-    bengala:
-      data:
-        first: 1
-        second: be860100
-      data:
-        first: 4
-        second: 9e1a0600
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    handles: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  additionalBone: 1
+  animationType: 1
+  userData: 

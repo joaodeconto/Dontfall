@@ -82,6 +82,7 @@ ModelImporter:
     7400000: Default Take
     7400002: PoseLib
     9500000: //RootNode
+    11100000: //RootNode
     13700000: calca1
   materials:
     importMaterials: 1
@@ -131,5 +132,5 @@ ModelImporter:
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   additionalBone: 1
-  animationType: 2
+  animationType: 1
   userData: 
