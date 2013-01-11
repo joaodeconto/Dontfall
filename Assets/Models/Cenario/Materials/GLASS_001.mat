@@ -16,13 +16,13 @@ Material:
           name: _MainTex
         second:
           m_Texture: {fileID: 2800000, guid: e6f8288974c664a309d6c66de636978c, type: 3}
-          m_Scale: {x: 10, y: 7}
+          m_Scale: {x: 2, y: 2}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _BumpMap
         second:
-          m_Texture: {fileID: 2800000, guid: 4b671164ce88abd4c8c2eece24eddf17, type: 3}
+          m_Texture: {fileID: 2800000, guid: d4243827f4748634f9b04c32f4cbf8e9, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -71,11 +71,11 @@ Material:
         second: .100000016
       data:
         first:
-          name: _EmissionLM
+          name: _InvFade
         second: 1
       data:
         first:
-          name: _InvFade
+          name: _EmissionLM
         second: 1
       data:
         first:
@@ -85,15 +85,15 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .141568258, g: .269392103, b: .462686539, a: 1}
+        second: {r: 0, g: 0, b: 0, a: 1}
       data:
         first:
           name: _SpecColor
-        second: {r: .5, g: .5, b: .5, a: 1}
+        second: {r: 0, g: 0, b: 0, a: 1}
       data:
         first:
           name: _ReflectColor
-        second: {r: .589552283, g: 1, b: .9655568, a: .501960814}
+        second: {r: .0287369043, g: .12476109, b: .320895493, a: .501960814}
       data:
         first:
           name: _TintColor
