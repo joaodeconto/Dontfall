@@ -1,0 +1,12 @@
+# Blender MTL File: 'Mendigo blender.blend'
+# Material Count: 1
+newmtl Standardmaterial
+Ns 21.568627
+Ka 0.000000 0.000000 0.000000
+Kd 0.470400 0.470400 0.470400
+Ks 0.315000 0.315000 0.315000
+Ni 1.000000
+d 0.000000
+illum 2
+
+
